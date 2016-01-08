@@ -1,15 +1,12 @@
-var colors = ['blue','yellow','cyan', 'black', 'red', 'green'];
-
-console.log(colors_list);
+var colors = ['blue','yellow','cyan', 'black', 'red', 'green', 'khaki'];
 colors.sort();
-var colors_list = colors.join();
 
 var target; 
 var targetIndexNumber
 var guess_input;
 var finished = false;
 var guesses = 0;
-
+var colors_list = colors.join();
 
 function do_game() {
 	var random_number = Math.random() * colors.length;
@@ -59,9 +56,15 @@ function check_guess() {
 	}
 
 	if (guess_input == colors[targetIndexNumber]) {
+		if (guesses == 1) {
+			var guessString = "guess";
+		} else {
+			var guessString = "guesses";
+		}
+
 		document.body.style.background = colors[targetIndexNumber];
 		alert("Congratulations. You have guessed the color! \n\n"
-			   + "It took you " + guesses + " guesses to finish the game.\n\n"
+			   + "It took you " + guesses + " " + guessString + " to finish the game.\n\n"
 			   + "You can see the color in the bacground");
 		return true;
 	}
