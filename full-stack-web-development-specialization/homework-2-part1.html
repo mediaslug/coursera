@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Part 1 -- Homework Assignment</title>
 
-		<script type="text/javascript">
-		var colors = ['blue','yellow','cyan', 'black', 'red', 'green', 'khaki'];
-		var colors = ['blue','yellow'];
-
+	<script type="text/javascript">
+		var colors = ['blue','yellow','cyan', 'red', 'khaki'];
 		colors.sort();
 
-		console.log("the length of the array is " + colors.length);
 
 		var target; 
 		var targetIndexNumber
@@ -23,10 +20,7 @@
 			var random_number_integer = Math.floor(random_number);
 			target = random_number_integer + 1;
 			targetIndexNumber = target - 1;
-			console.log("the original random number is "+ random_number);
-			console.log("target index is "+ targetIndexNumber);
-			console.log("the color would be " + colors[targetIndexNumber])
-			
+			alert("guess color is" + colors[targetIndexNumber]);
 			while (!finished) {
 				guess_input = prompt("i'm thinking of one of these colors: \n\n" 
 					                        + colors_list 
@@ -40,29 +34,6 @@
 		}
 
 		function check_guess() {
-			
-			if (!guess_input) {
-				return false;
-			}
-			if ( (guess_input) && colors.indexOf(guess_input) == -1) { // if not in the array
-				alert("Sorry I don't recognize that color\n\nPlease try again.");
-				return false;
-			};
-			console.log("the guess and target are " + guess_input + " " + colors[targetIndexNumber]);
-			if (guess_input > colors[targetIndexNumber]) { // if guess is not correct
-				alert("Sorry your guess is not correct\n\n"
-					   + "Hint your color is alphabetically higher than mine\n\n"
-					   + "Please try again.");
-				return false;
-			}
-
-			if (guess_input < colors[targetIndexNumber]) {
-				alert("Sorry your guess is not correct\n\n"
-					   + "Hint your color is alphabetically lower than mine\n\n"
-					   + "Please try again. ");
-				return false;
-			}
-
 			if (guess_input == colors[targetIndexNumber]) {
 				if (guesses == 1) {
 					var guessString = "guess";
@@ -71,13 +42,10 @@
 				}
 
 				document.body.style.background = colors[targetIndexNumber];
-				alert("Congratulations. You have guessed the color! \n\n"
-					   + "It took you " + guesses + " " + guessString + " to finish the game.\n\n"
-					   + "You can see the color in the bacground");
 				return true;
+			} else {
+				return false;
 			}
-		 
-
 		}
 
 
