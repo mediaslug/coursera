@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Playing Around with some of the examples from week 3</title>
+
+	<script type="text/javascript">
+		var pets = ["Dog", "Cats", "Rabbit", "Hamster", "Rabbit", "Rabbit", "Dog", "Cat", "Mule", "Horse", "Duck"];
+		var rabbitIndexNumbers = [];
+		var startSearchAt = 0;
+		do {
+			foundAt = pets.indexOf("Rabbit", startSearchAt);
+			if (foundAt != -1) { // if the item was found
+				rabbitIndexNumbers.push(foundAt); // add the index to the array
+				startSearchAt = foundAt +1; // start searching at the next position
+			}
+		} while (foundAt != -1) 
+		alert(rabbitIndexNumbers.join());
+
+		
+		// ==================================================
+		// an example of using forEach with all parameters
+		// this replaces all elements in the original array with their square
+
+		var numbers = [1,2,3,4,5,6];
+
+		numbers.forEach(function(element, index, arr){
+			arr[index] = element * element;
+		});
+		alert(numbers);
+
+		// ==================================================
+		// an example of using map(). 
+		// this works without affectng the orginal array
+
+		var square = function (el) {return el * el;}
+		var numbers = [1,2,3,4,5,6];
+		var results = numbers.map(square);
+		alert(results);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

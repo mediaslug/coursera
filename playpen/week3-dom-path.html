@@ -1,0 +1,97 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+		function handleClick(event) {
+			event.stopPropagation();
+
+			var node = event.target;  // this is the node on which we clicked
+			var thisPath = node.nodeName; // a reference to the nodeName
+
+
+			while(node.parentNode) {
+				node = node.parentNode;
+				thisPath = node.nodeName + " > " + thisPath;
+			}
+
+			alert(thisPath);
+		}
+
+		function attachHandler(node) {
+			if (node==null) return;
+			node.onclick = handleClick;
+
+			for (var i=0; node.childNodes.length; i++) {
+				visit(node.childNodes[i]);
+			}
+		}
+
+
+		function init() {
+			attachHandler(document.getElementsByTagName('body')[0]);
+		}
+
+	</script>
+</head>
+<body onload = "init()">
+        <p>Click on the link or form elements to see the DOM
+        path to that node</p>
+
+        <p>(The html that you see below is just some 'random' html which
+        helps to demonstrate the technique).</p>
+
+        <b>LISTS</b>
+
+        <ul>
+
+            <li><a onclick="handleClick()" href="">List 1</a></li>
+            <li><a href="">List 2</a></li>
+            <li><a href="">List 3</a></li>
+            <li><a href="">List 4</a>
+
+                <ol>
+                    <li><a href="">Order List 1</a></li>
+                    <li><a href="">Order List 2</a></li>
+                    <li><a href="">Order List 3</a></li>
+                    <li><a href="">Order List 4</a></li>
+                </ol>
+
+            </li>
+        </ul>
+
+        <p><b>TABLES</b></p>
+        
+        <table border="3">
+            <tbody>
+                <tr>
+                    <td><a href="">Cell 1</a></td>
+                    <td><a href="">Cell 2</a></td>
+                    <td><a href="">Cell 3</a></td>
+                    <td><a href="">Cell 4</a></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                    <form>
+                        <table border="1">
+                            <tbody>
+                                <tr>
+                                    <td><input type="text"></td>
+                                    <td><input type="button" value="Click!"></td>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="radio"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
+
+
+
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Part 2 -- Homework Assignment</title>
+	<script type="text/javascript">
+
+		// setup the colors array
+		var colors = ['blue','yellow','cyan', 'red', 'khaki'];
+		colors.sort();
+
+
+		// variable declarations
+		var target;
+		var userResponse; 
+		var targetIndexNumber
+		var guess_input;
+		var finished = false;
+		var guesses = 0;
+		var colors_list = colors.join();
+
+		// call the do game function to initiate the game
+		function do_game() {
+			// create random number
+
+			var random_number = Math.random() * colors.length;
+			var random_number_integer = Math.floor(random_number);
+			
+			// consider changing the following two lines
+			target = random_number_integer + 1;
+			targetIndexNumber = target - 1;
+			
+			// continue to prompt the user until they guess the correct answer
+			while (!finished) {
+				userResponse = prompt("i'm thinking of one of these colors: \n\n" 
+					                        + colors_list 
+				
+											+ "\n\n What color am I thinking of?");
+				guess_input = userResponse.trim().toLowerCase();
+				console.log(guess_input);
+				guesses += 1;
+				finished = check_guess();
+				if (!guess_input) {
+					finished = false;
+				}
+			}
+		}
+
+		// logic to compare the guess to the target. if it matches, function returns true
+		function check_guess() {
+			
+			// check to see if guess is empty, if so return false
+			if (!guess_input) {
+				return false;
+			}
+
+			// if guess exists and is not in the array
+			if ( (guess_input) && colors.indexOf(guess_input) == -1) { // if not in the array
+				alert("Sorry I don't recognize that color\n\nPlease try again.");
+				return false;
+			};
+
+			// if guess is alphabetically greater than color
+			if (guess_input > colors[targetIndexNumber]) { // if guess is not correct
+				alert("Sorry your guess is not correct\n\n"
+					   + "Hint your color is alphabetically higher than mine\n\n"
+					   + "Please try again.");
+				return false;
+			}
+
+			// if guess is lower than color
+			if (guess_input < colors[targetIndexNumber]) {
+				alert("Sorry your guess is not correct\n\n"
+					   + "Hint your color is alphabetically lower than mine\n\n"
+					   + "Please try again. ");
+				return false;
+			}
+
+			// if guess matches color
+			if (guess_input == colors[targetIndexNumber]) {
+				// change the text for singular vs. plural
+				if (guesses == 1) {
+					var guessString = "guess";
+				} else {
+					var guessString = "guesses";
+				}
+
+				// set the background color of the body
+				document.body.style.background = colors[targetIndexNumber];
+				alert("Congratulations. You have guessed the color! \n\n"
+					   + "It took you " + guesses + " " + guessString + " to finish the game.\n\n"
+					   + "You can see the color in the bacground");
+				return true;
+			}
+		}
+
+	</script>
+	
+</head>
+<body onload= "do_game()">
+
+</body>
+</html>

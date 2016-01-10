@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dating Site</title>
+	<script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>
+	<style type="text/css">
+
+
+	/*
+
+		The background of each fieldset is lightyellow e.g. background:lightyellow.
+		The border of each fieldset is yellow, with 10px width e.g. border:10px solid yellow
+		The fieldset needs to have margin-bottom:10px
+		The width of each fieldset is 720px
+		The width of each label is 180px
+		The label text needs to have display:inline-block
+		The label text needs to be right-align and top-align 
+		The labels of the checkbox and the radio needs to have width:auto
+		For the words on both sides of the two range, you can use any appropriate style e.g. text-align:center
+		The textarea needs to be width:360px and height:50px
+	*/
+
+	/* ========================================================== */
+
+		/*
+			The background of each fieldset is lightyellow e.g. background:lightyellow.
+			The border of each fieldset is yellow, with 10px width e.g. border:10px solid yellow
+			The fieldset needs to have margin-bottom:10px
+			The width of each fieldset is 720px
+		*/
+		fieldset {
+			background-color: lightyellow;
+			border: 10px solid yellow;
+			margin-bottom: 10px;
+			width: 720px;
+		}
+
+		/*
+			The width of each label is 180px
+			The label text needs to have display:inline-block
+			The label text needs to be right-align and top-align 
+			The labels of the checkbox and the radio needs to have width:auto
+		*/
+
+		label {
+			width: 180px;
+			display: inline-block;
+			text-align: right;
+			vertical-align: top;
+
+
+		}
+
+		
+
+		.radioOrCheckbox {
+			text-align: left;
+			width: auto;
+		}
+
+		/*
+			For the words on both sides of the two range, you can use any appropriate style e.g. text-align:center
+		*/
+		.rangeLabel {
+			text-align: center;
+			display: inline-block;
+			color: white;
+			width: 50px;
+		}
+
+		.low {
+			background-color: maroon;
+		}
+
+		.high {
+			background-color: purple;
+		}
+
+		label:hover { 
+			font-size:30px 
+		}
+		
+		input:hover { 
+			font-size:30px 
+		}
+		/*
+			The textarea needs to be width:360px and height:50px
+		*/
+
+	</style>
+</head>
+<body>
+	<h1> Please Enter Your Details for Our Dating Site </h1>
+	<form action = "http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method = "get" enctype = "mulipart/form-data">
+		<fieldset>
+			<legend>Your Face</legend>
+			<div>
+				<label for="image"> Your image </label>
+				<input type = "file" id="avatar" name="avatar" required>
+			</div>
+			Image Preview: <img id= "preview">
+
+		</fieldset>
+		<fieldset>
+			<legend>Your General Details</legend>
+			
+			<div> 
+				<label for="name">Name:</label>
+				<input type = "text" id="name" name="name" placeholder = "Your full name" required> <br />
+			</div>
+			<div>
+				<label> Gender: </label>
+				<input type = "radio" id = "female" name = "gender" value="Female" required>
+				<label class = "radioOrCheckbox" for = "female">Female</label>
+				
+				<input type = "radio" id = "male" name = "gender" required>
+				<label class = "radioOrCheckbox" for = "male">Male</label>
+			</div>
+
+			<div>
+				<label for = "age">Age:</label>
+				<input type = "number" id = "age" name = "age" required> <br />
+			</div>
+			<div>
+				<label for = "dob">Date of Birth:</label>
+				<input type = "date" id = "dob" name = "dob"> <br />
+			</div>
+			<div>
+				<label for = "color">Favorite color:</label>
+				<input type = "color" id = "color" name = "color"><br />
+			</div>
+			<div>
+				<label for = "country">Which Country:</label>
+				<select id = "country" name = "country" required>
+					<option disabled selected></option>
+					<option>America</option>
+					<option>China</option>
+					<option>Japan</option>
+					<option>Thailand</option>
+					<option>United Kingdom</option>
+				</select> <br />
+
+			</div>
+
+
+		</fieldset>
+		<fieldset>
+			<legend>Your Indicators</legend>
+			  <div>
+			  	<label for = "height">Height:</label>
+			  	<span class = "rangeLabel low">Short</span> <input type = "range" id = "height" name = "height" min = "0" step = "5" max = "100" value = "50" required> <span class = "rangeLabel high">Tall</span> <br />
+			  
+			  </div>
+
+			  <div>
+			  	<label for = "salary">Salary:</label>
+
+			  	<span class = "rangeLabel low">Poor</span> <input type = "range" id = "salary" name="salary" min="0" step = "5" max="100" value = "50" required> <span class = "rangeLabel high">Rich</span> <br />
+
+			  </div>
+			  
+		</fieldset>
+
+		<fieldset>
+			<legend>Your Contact Information</legend>
+
+			<div>
+				<label for = "email">Email:</label>
+				<input type = "email" id = "email" name = "email" required><br />
+
+			</div>
+	
+			<div>
+				<label for = "phone">Mobile:</label>
+				<input type = "tel" id = "phone" name = "phone"><br />
+
+			</div>	
+
+			<div>
+				<label for "address">Address:</label>
+				<textarea id = "address"></textarea>
+			</div>	
+
+			<div>
+				<label> Method to contact you: </label>
+				<input type = "checkbox" id = "contact-via-email" name="contact-via-email">
+				<label class = "radioOrCheckbox" for = "contact-via-email">Email</label>
+
+				<input type = "checkbox" id = "contact-via-whatsapp" name="contact-via-whatsapp">
+				<label class = "radioOrCheckbox" for = "contact-via-whatsapp">Whatsapp</label>
+				
+				<input type = "checkbox" id = "contact-via-in-app-chat" name="contact-via-in-app-chat">
+				<label class = "radioOrCheckbox" for = "contact-via-in-app-chat">In-app chat</label>
+
+			</div>
+			
+
+		</fieldset>
+
+		<input type = "submit">
+
+	</form>
+</body>
+</html>

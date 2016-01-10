@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Part 1 -- Homework Assignment</title>
+
+	<script type="text/javascript">
+		var colors = ['blue','yellow','cyan', 'red', 'khaki'];
+		colors.sort();
+
+
+		var target; 
+		var targetIndexNumber
+		var guess_input;
+		var finished = false;
+		var guesses = 0;
+		var colors_list = colors.join();
+
+		function do_game() {
+			var random_number = Math.random() * colors.length;
+			var random_number_integer = Math.floor(random_number);
+			target = random_number_integer + 1;
+			targetIndexNumber = target - 1;
+			alert("guess color is " + colors[targetIndexNumber]);
+			while (!finished) {
+				guess_input = prompt("i'm thinking of one of these colors: \n\n" 
+					                        + colors_list 
+											+ "\n\n What color am I thinking of?");
+				guesses += 1;
+				finished = check_guess();
+				if (!guess_input) {
+					finished = false;
+				}
+			}
+		}
+
+		function check_guess() {
+			if (guess_input == colors[targetIndexNumber]) {
+				if (guesses == 1) {
+					var guessString = "guess";
+				} else {
+					var guessString = "guesses";
+				}
+
+				document.body.style.background = colors[targetIndexNumber];
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+	</script>
+	
+</head>
+<body onload= "do_game()">
+
+</body>
+</html>
