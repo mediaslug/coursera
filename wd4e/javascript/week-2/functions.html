@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Code Along with Lectures</title>
+	<link rel="stylesheet" type="text/css"  href="styles.css">
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+	<header>
+		<h1>Function call that modifies the DOM</h1>
+	</header>
+	<p id="foo">
+		this is a paragraph
+	</p>
+	<button onclick="displayDate()">click me </button>
+
+	<header>
+		<h1>Modify the DOM</h1>
+	</header>
+	<div>
+		<button class = "button1" onclick = "document.getElementById('stuff').innerHTML='Clicked the first button'"> First </button>
+		<button class = "button1" onclick = "document.getElementById('stuff').innerHTML = 'Clicked the second button'"> Second </button>
+	</div>
+
+
+	<p>This is a paragraph</p>
+	<p id="stuff">This is a second paragraph</p>
+	<p>This is a third paragraph</p>
+
+	<header>
+		<h1>Change the style</h1>
+	</header>
+	<p>JavaScript can change the style of an HTML element.</p>
+
+	<button onClick = "openMe()" >Open</button>
+	<button onClick = "closeMe()">Close</button>
+
+	<p id="demo">Extra details...You can open and close this paragraph using the buttons above.</p>
+
+</body>
+</html>

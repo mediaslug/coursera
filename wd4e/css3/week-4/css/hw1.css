@@ -1,0 +1,153 @@
+
+/* homework 3, week 4, pja  */
+
+/* week 4 */
+  /* 1) The table should be styled using at least four properties */
+
+table {
+    width: 100%;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: separate;
+}
+
+
+/* 2) The table headings should have a border, background color, and at least one other image */
+/* The table headings should have a border, background color, and at least one other property */
+th {
+    border: 1px solid;
+    background-color: #92A252;
+    height: 50px;	
+    text-align: center; 
+    border-radius: 3px;
+    color: #FFFFFF
+} 
+
+/* 3) Style the table so that the text in the first column is left-aligned and the text in the other two columns is centered */
+
+th:first-child {
+    height: 50px;
+    text-align: left;
+} 
+
+td:first-child {
+    text-align: left;
+}
+
+/* 4) Set the opacity of the table rows to a value between .6 and .8 (make sure it is still visible) */
+/* 6) The table elements <td> should be styled using at least four properties */
+
+td {
+	text-align: center; 
+	background-color: #E4F5D4;	
+	opacity: .8;	
+	padding: 3px 7px 2px 7px;
+
+}
+
+/* 5) Change the opacity of a row when it is hovered over */
+tr:hover {
+	background-color: #768383;
+	opacity: .9;
+
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++ Homework 1 and 2 styles below this line ++++++++++++++++++++++++++++++++++++ */
+
+/* The body should have padding and margin  */
+body {
+	margin:  10px 40px;
+	padding: 10px 20px;
+}
+
+/* The header should have a background color, background image (using a local image), and padding */
+header {
+	background-color: #999966;
+	background-image: url("../images/flywheel.jpg");
+	padding: 25px;
+
+
+}
+
+h1 {
+	text-align: center;
+	color: #EEEEEE;
+	text-transform: uppercase;
+}
+
+h2 {
+	color: #0066CC;
+}
+
+/* The navigation links (and only the links in the navigation) should 
+   be styled with a new display, margin, border-radius, text-decoration, and padding */
+
+nav a{
+  display: inline-block;
+  margin:5px;
+  border-radius: 6px;
+  text-decoration: none;
+  padding: 10px;
+  color: #606060;
+  background-color: #e6e6e6;
+  width: 15%;
+  opacity: .5;
+  text-align: center;
+
+
+}
+
+/*The sections should be next to each other, not one on top of the other. */
+
+.left {
+	background-color: #617200;
+	width: 20%;
+	margin-right: 2%;
+	float: left;
+}
+
+.right {
+	width: 70%;
+	margin-right: 2%;
+	padding:10px;
+ 	display: inline-block;
+ 	float: left;
+}
+
+/* The images should be part of the page now. In addition, 
+   they should have a border, be centered horizontally, and 
+   have vertical (top/bottom) space between them and the other images. */
+
+img {
+	max-height:100%;
+	max-width:150px;
+	padding:1px;
+	border:2px solid #021a40;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+  
+}
+
+/* The link to the current page should be styled differently from the other links (using class = "active') */
+
+.active {
+	color: #333;
+  	background-color: #ffffff;
+  	border-color: #adadad;
+  	opacity: 1;
+
+  }
+
+  
+
+
+
+
+
+
+
+
+

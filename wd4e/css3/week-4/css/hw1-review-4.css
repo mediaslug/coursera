@@ -1,0 +1,102 @@
+table{
+	width:80%;
+	line-height: 25px;
+	margin-left: 80px;
+	font-family: arial;
+}
+th{
+	background: linear-gradient(#99cbff,#0070e6);
+	border-style: solid;
+	border-color: #000000;
+	border-width:2px 2px 3px 2px; 
+	border-radius: 6px 6px 0 0;
+	padding-left: 6px;
+	line-height: 30px;
+	color: #ffffff;
+	text-shadow: 1px 1px #000000;
+}
+tr{
+	opacity: 0.8;
+}
+th:first-child,td:first-child{
+	text-align: left;
+}
+th:nth-child(2),th:nth-child(3){
+	text-align: center;
+}
+td:nth-child(2),td:nth-child(3){
+	text-align: center;
+}
+tr:hover{
+	opacity: 1;
+}
+td{
+	padding: 5px;
+	padding-left: 7px;
+	background: #cccccc;
+	color:#001933;
+	border: 2px outset #cccccc;
+	font-size: 90%;
+}
+/* From previous weeks homework*/
+body{
+	width: 963px;
+	padding:5px;
+	margin:3px;
+}
+header{
+	background-color: #e6e6e6;
+	background-image:url("../images/flywheel.jpg");
+	padding:50px;
+	background-repeat: no-repeat;
+	background-position: top center; 
+}
+nav a{
+	display: inline-block;
+	padding: 12px 20px ;
+	background-color: #e6e6e6;
+	border-radius: 8px;
+	margin-right:25px;
+	margin-top:10px;
+	text-decoration: none;
+}
+nav{
+	display: block;
+	margin-left: 200px;
+}
+.active{
+	background-color: #b3b3b3;
+	border-style: solid;
+	border-width: 2px;
+}
+h1{
+	text-align: center;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	font-size: 120%;
+}
+h2{
+	text-align: left;
+	color:#000000;
+	margin: 0;
+}
+.right{
+	margin-left: 215px;
+}
+.left{
+	background-color: #8c8c8c;
+	display:block;
+	float:left;
+	width:210px;
+}
+.left img{	
+	display: inline-block;
+	float:left;
+	width:75%;
+	margin-left:12%;
+	margin-top:5px;
+	margin-bottom: 5px;
+	border-style:solid;
+	border-width:2px;
+	border-color: #000000;
+}
