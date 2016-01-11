@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<!-- This is an example of using the same template with 
+  different data -->
+	<head>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/handlebars-v3.0.3.js"></script>
+
+		<script src="js/bootstrap.min.js"></script>
+
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/gallery.css" rel="stylesheet">
+
+	</head>
+
+	<body role="document">
+		<div class="container">
+			<div class="page-header">
+				<h1>My Photo Albums</h1>
+			</div>
+				<ul class = "nav nav-tabs">
+					<li role="" id="detailsbtn"> <a href="#">Details</a></li>					
+					<li role="" id="modalbtn"> <a href="#">Modal</a></li>
+				</ul>
+			<!-- the content of the web page starts off empty because we will fill it later from the template -->
+			<div id="content" class="container-fluid" role="main">
+
+
+			</div>
+		</div> <!-- end the container div-->
+
+		<!-- This is our template. it displays an image with a title and author headings the bits in curly braces {{}} are template expressions. this code uses bootstrap to provide a grid based layout-->
+		<script id="detail-template" type="text/x-handlebars-template">
+		<br>
+		<div class="row-fluid">
+			<div class="col-sm-5">
+				<img style="width:100%" src = "{{src}}" />
+			</div>
+			<div class="col-sm-7"> 
+				<h1> {{title}} </h1>
+				<h3 class="author"> {{author}}</h3>
+			</div>
+		</div>
+
+		</script>
+
+		    <!-- This template displays a modal pop-up of the image. 
+         It has quite a bit of boilder plate HTML code but in 
+         essence it just displays and image tag within a 
+         set of divs that define the modal  -->
+
+		<script id="modal-template" type="text/x-handlebars-template">
+			<div id="imageModal" class = "modal fade" role="dialog">
+				<div class="modal-dialog" style="width:800">
+					<div class="modal-content">
+						<div class = "modal-body">
+							<img style="width:100%" src = "{{src}}" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+
+        <script type="text/javascript">
+              var source = $("#detail-template").html();
+              var detail_template = Handlebars.compile(source);
+
+              source = $("#modal-template").html();
+              modal_template = Handlebars.compile(source);
+
+              // this is the object we will be using
+               var data = {
+                    src: "https://upload.wikimedia.org/wikipedia/commons/archive/9/97/20101017074210%21The_Earth_seen_from_Apollo_17.jpg", 
+                    title:"The Earth seen from Apollo 17",
+                    author:"Ed g2s"
+                 };
+
+              // this instantiates the detail template
+              $("#detailsbtn").click(function() {
+                    // hide the modal if it is showing
+                    $("#imageModal").modal('hide');
+
+                    var html = detail_template(data);
+                    $("#content").html(html);
+
+              });
+
+              // this instatiates the modal template
+              $("#modalbtn").click(function() {
+
+                    var html = modal_template(data);
+                    $("#content").html(html);
+                
+                    // we can only show the modal once the template has been instantiate, because it doesn't exist before that
+                    $("#imageModal").modal('show');
+
+                    // create a call back for when the modal is hidden so we can re-display the detail template
+                    $("#imageModal").on('hidden.bs.modal', function() {
+                          $("#detailsbtn").click();
+                    });
+
+
+
+              });
+
+
+        </script>
+
+	</body>
+	
+</html>

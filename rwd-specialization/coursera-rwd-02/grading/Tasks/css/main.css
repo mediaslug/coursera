@@ -1,0 +1,32 @@
+img {
+    width:50%;
+}
+.task {
+    width:100%;
+    border: 3px solid #2f89a7;
+    display:inline-block;
+    min-height: 50px;
+    vertical-align: text-top;
+    padding:2px;
+    border-radius: 5px;
+}
+.task a span {
+    margin-left:5%;
+}
+.task a{
+    width:100%;
+    min-height: 50px;
+    display:block;
+}
+.task a img {
+    margin:0px 5px;
+    padding:2px;
+    width:50px;
+}
+.task-details {
+   margin:0px 20px;
+}
+.tasklist {
+    list-style: none;
+    
+}

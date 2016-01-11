@@ -1,0 +1,89 @@
+<html>
+    <!-- This is a first example of using a template -->
+    <head>
+    <!-- include our libraries and css files -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="assignment.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <!-- put your HTML here -->
+        <header class="navbar navbar-static-top bs-docs-nav navigation" id="top" role="banner">
+            <div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="fa fa-lg fa-bars"></span>
+					</button>
+				</div>
+				<nav id="bs-navbar" class="collapse navbar-collapse ">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">Home</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+        </header>
+		<div class="bs-docs-header imageland divisor" id="content" >
+			<div class="container">
+				
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+					<li class=""><span>Home</span></li>
+					<li class="active"><span>Animal Data</span></li>
+				</ol>
+				<h4>Animal Data</h4>
+			</div>
+		</div>
+		<div class="container maincontent">
+			<div class="col-lg-12 col-md-12 col-xs-12">
+				<ul class="nav nav-tabs">
+					<li role="" class="active"><a href="#" id="classes-tab" >Classes</a></li>
+					<li role=""><a href="#" id="animals-tab" >Animals</a></li>
+				</ul>
+			</div>
+			<div id="site_content"  class="container-fluid"  role="main">
+					  
+      		</div>
+		</div>
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/handlebars-v3.0.3.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="AnimalsData.js"></script>
+        <script src="assignment.js"></script>
+		<script id="class-template" type="text/x-handlebars-template">
+			<div class="row">
+				{{#each class}}
+					<div class="col-xs-12 col-md-4 center singleborder" data-id="{{name}}"> 
+						<h4>{{name}}</h4>
+						<div class="col-lg-12">
+							<img src="{{animals.[0].image1}}" class="imageProfile" alt="">
+						</div>	
+					</div> <!-- / col -->
+				{{/each}}
+			</div>
+		</script>
+		<script id="animal-template" type="text/x-handlebars-template">
+			<div class="row">
+				{{#each animals}}
+					<div class="col-xs-12 col-md-12 center" data-id="{{@index}}"> 
+						<h4>{{name}}</h4>
+						<div class="col-lg-12">
+							<p class="justify">{{description}}</p>
+						</div>
+						<div class="col-lg-6 col-xs-6">
+							<img src="{{image1}}" width="100%" alt="">
+						</div>
+						<div class="col-lg-6 col-xs-6">
+							<img src="{{image2}}" width="100%" alt="">
+						</div>
+					</div> <!-- / col -->
+				{{/each}}
+			</div>
+		</script>
+    </body>
+</html>

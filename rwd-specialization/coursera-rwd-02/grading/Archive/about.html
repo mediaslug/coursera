@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <title></title>
+
+    <link href="css/bootstrap.css" rel="stylesheet"> <!-- pulls in the main bootstrap content we need -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+
+      <ul class="nav navbar-nav">
+        <li><a href="tasks.html">Main Task List</a></li>
+        <li><a href="task_details.html">Task Details</a></li>
+        <li class="active"><a href="about.html">About</a></li>
+      </ul>
+
+    </nav>
+
+    <div class="container">
+      <h1 class="bg-primary">About</h1>
+      <!-- start bread crumb -->
+      <ol class=breadcrumb>
+        <li><a href="tasks.html">Main Task List</a></li>
+        <li><a href="task_details.html">Task Details</a></li>
+        <li><a href="about.html">About</a></li>
+      </ol>
+      <!-- end bread crumb -->
+
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+
+        <h3 class="bg-info">Module_2/Week_2 Class Project</h3>
+        <p class="text-primary"><br>Created by<br>
+        Jim Barron<br><br></p>
+
+        <!-- Back Button -->
+        <button type="button" class="text-warning" onclick="history.go(-1);return true;">Back</button>
+        </div>
+      </div> <!--end of row div -->
+
+    </div>
+    <script src="js/jquery.min.js"></script> <!-- jquery libraries -->
+    <script src="js/bootstrap.min.js"></script> <!-- bootsrap libraries -->
+
+  </body>
+</html>

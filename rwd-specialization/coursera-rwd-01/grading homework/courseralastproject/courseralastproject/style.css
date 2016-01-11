@@ -1,0 +1,62 @@
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  color: chocolate;
+  text-decoration: underline;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0px 1px 0px darkGray, 0px 2px 0px gray, 0px 3px 0px lightslategray, 0px 4px 0px dimGray, 0px 5px 0px darkslategray, 0px 6px 5px black;
+  padding: 1.1em;
+  font-weight: bold;
+}
+
+.lista {
+  font-family: serif;
+}
+
+.lista:hover{
+  font-size: 1.1em;
+  color: red;
+  cursor: pointer;
+}
+
+.gallery-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item > img {
+  width: 100%;
+  display: block;
+  transition: all .2s;
+}
+
+.gallery-item:hover>img {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.gallery-item:hover:after {
+  opacity: 1;
+}
+
+.information {
+  display: none;
+}
+
+#movie1 {color: #fff; background-color: #1E88E5;}
+#movie2 {color: #fff; background-color: #673ab7;}
+#movie3 {color: #fff; background-color: #ff9800;}
+#movie4 {color: #fff; background-color: #00bcd4;}
+#movie5 {color: #fff; background-color: #009688;}
+
+.teatro {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+}

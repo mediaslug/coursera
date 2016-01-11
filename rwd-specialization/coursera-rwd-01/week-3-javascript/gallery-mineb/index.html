@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<!-- import bootstrap -->
+		<link rel = "stylesheet"
+			  type = "text/css"
+			  href = "bootstrap.css"
+
+			  />
+
+		<!-- import our own stylesheet -->
+		<link rel = "stylesheet"
+			  type = "text/css"
+			  href = "styles.css"
+			  />
+
+		<!-- import jquery -->
+		<script src = "http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+		<!-- header information -->
+		<a href = "index.html"> Home</a> &nbsp;
+		<a href = "aboutme.html"> About Me </a> &nbsp;
+		<a href = "contact.html"> Contact Me </a> &nbsp;
+
+		<div class = "container"> 
+			<h1> Image Gallery </h1>
+
+			<!-- these are the thumbnail images. they are laide out using the bootstrap grid. 
+			     I have given them all the class "crop-image" which i use in the css and javascript code -->
+
+			 <div class = "row">
+			 	<div class = "col-md-3"> 
+			 		<img class = "crop-img" src = "img_1.jpg"  alt="graffittied building"/> 
+			 	</div>
+			 	<div class = "col-md-3"> 
+			 		<img class = "crop-img" src = "img_2.jpg" alt="display of cheese"/> 
+			 	</div>
+
+			 	<div class = "col-md-3"> 	
+			 		<img class = "crop-img" src = "img_3.jpg" alt="synethesizer workshop"/>
+			 	</div>
+			 	<div class = "col-md-3"> 	
+			 		<img class = "crop-img" src = "img_4.jpg" alt="City night"/>
+			 	</div>
+			</div> <!-- close the row -->
+
+
+ 		<!--
+			this is the large image which is
+			on a row of its own. 
+			I will change it source in the 
+			javascript
+		-->
+
+			<div class = "row">
+				<div class="col-md-12">
+					<img id = "bigImage" class = "large-img" src = "img_1.jpg" />
+
+		</div> <!-- close container -->
+
+		<script>
+			/*
+			when we click on the thumbnail, we ser the src attribute of the big image to be the same as the 
+			src attribute of the image we have clicked on ("this").
+
+			This loads the same image file into the big image
+			*/
+			$(".crop-img").click(function() {
+				$("#bigImage").attr('src', $(this).attr('src'));
+
+			});
+
+		</script>
+
+
+
+
+
+

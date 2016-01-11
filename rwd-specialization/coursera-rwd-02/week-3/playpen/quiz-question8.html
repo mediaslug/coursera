@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>foo</title>
+
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/handlebars-v3.0.3.js"></script>
+
+		<script src="js/bootstrap.min.js"></script>
+		</head>
+<body>
+	<div id="content" class="container-fluid" role="main">
+
+
+	</div>
+
+
+
+<script id="my-template" type="text/x-handlebars-template">
+  <h1>{{Name}}</h1>
+  <h3>{{age}}</h3>
+  <img src="{{src}}"/>
+</script>
+
+<script type="text/javascript">
+    var source = $("#my-template").html();
+    var template = Handlebars.compile(source);
+    		console.log("foo");
+
+
+
+
+
+
+
+var data = {
+  Name : "Ananda",
+  age : "23",
+  image : "ananda_on_the_beach.jpg"
+}
+	var html = template(data);
+	    $("#content").html(html);
+
+
+
+</script>
+
+</body>

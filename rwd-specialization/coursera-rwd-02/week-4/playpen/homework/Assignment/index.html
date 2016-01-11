@@ -1,0 +1,177 @@
+<!-- This is a first example of using a template -->
+
+<head>
+
+<!-- include our libraries and css files -->
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="AnimalsData.js"></script>
+<script src="assignment.js"></script>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+ <body>
+
+    <div class="container">
+
+      <!-- page tile -->
+      <div class="page-header">
+        <h1>Animals </h1>
+      </div>    
+
+      <!-- A navigation menu that selects different views -->
+      <ul class="nav nav-tabs">
+            <li role="" class="active"><a href="#" id="categories-tab">Categories</a></li>
+            <!--
+            <li role=""><a href="#" id="animals-tab" >Animals</a></li>
+            <li role=""><a href="#" id="slideshow-tab" >Slideshow</a></li>
+          -->
+
+          </ul>
+      <br/><br/>
+
+
+      <!-- the content section is empty as we will fill it 
+            via javascript and templates -->
+      <div id="content"  class="container-fluid"  role="main">
+      </div>
+  </div> <!-- / container -->
+
+<!-- Here are our Templates -->
+
+
+<!-- this is the template for the albums view -->
+<!-- 
+    it displays the albums in a bootstrap grid format
+    with one item for each album (using the {{#each}} template expression. 
+    Each album is displayed with a thumbnail image, a name and 
+    the number of photos (using the {{photos.length}} template expression, see my lecture for more details)
+-->
+<script id="category-template" type="text/x-handlebars-template">
+  <div class="row">
+
+    {{#each category}}
+    <div class="col-xs-12 col-md-3"> 
+        <div class="album-thumbnail"  data-id="{{@index}}">            
+          <div class="caption">
+              <h4> <a class="album-thumbnail" data-id="{{@index}}" href = "#">{{name}}</a> </h4>
+              <p> {{description}}</p>
+              <p>{{animals.length}} animals</p>
+          </div>
+         </div>
+    </div> <!-- / col -->
+
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+<!-- this is the template for the photos view of a single album -->
+<!-- 
+    like albums view it uses a bootstrap grid format to display the photos in an album
+    
+    Each photos is displayed with anumbnail image, a name and 
+    a description
+-->
+<script id="animals-template" type="text/x-handlebars-template">
+  <div class="row">
+    <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+    <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+    {{#each animals}}
+    <div class="col-xs-12 col-md-3"> 
+     <div class="photo-thumbnail"  data-id="{{@index}}">
+         <h3>{{name}}</h3>
+        <img class="img-responsive" src="{{image1}}" alt=""/> 
+        <img class="img-responsive" src="{{image2}}" alt=""/> 
+        <p>{{description}}</p>
+      </div>
+        <a href="index.html"> Return to Animals </a>
+   
+    </div> <!-- / col -->
+
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+<!-- this is the template for the view a single photo -->
+<!-- 
+    It is displayed as a large image with title and description
+-->
+<script id="animal-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-xs-12 col-md-12"> 
+        <img class="large-img" src="{{src}}" alt=""/> 
+        <h4> <a id = "" href = "#">{{name}} </a></h4>
+
+        <p>{{animals.length}} animals </p>
+        <p> {{@index}}</p>
+
+        <div class="caption">
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+        </div>
+      </div> <!-- / col -->
+
+  </div> <!-- / row -->
+
+
+</script>
+
+<!-- this is the template for the slideshow view of a single album -->
+<!-- 
+    It uses the carousel view, which is quite complex, see my lecture for details
+-->
+<script id="slideshow-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+  
+       <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+          {{#each category}}
+            <div class="item {{#if @first}}active{{/if}}">
+             <img class="carousel-img" src="{{src}}" alt=""/> 
+             <p>foo</p>
+            <div class="carousel-caption">
+              Image caption
+            </div>
+          </div> <!-- / carousel item -->
+          {{/each}}
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div> <!-- / carousel --> 
+  </div> <!-- / col -->
+</div> <!-- / row -->
+</script>
+</body>

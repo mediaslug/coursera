@@ -1,0 +1,167 @@
+<head>
+  <title>Site Ace Homework Assignment</title>
+</head>
+
+<body>	
+</body>
+
+<template name="ApplicationLayout">
+	<!-- points at which i can insert content. "yield" is a placehoder for the router-->
+	{{>yield "navbar"}}
+	{{>yield "main"}}
+
+</template>
+
+<template name="add_and_list">
+
+	<div class="container">
+		{{#if currentUser}}
+			{{> website_form}}
+		{{/if}}
+		{{> website_list}}
+	</div>
+</template>
+
+<template name ="navbar">
+	<!-- navbar  - you will be putting the login functions here -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a href="/">  List of Sites </a>
+	      &nbsp;
+	      <a href="/search">Search</a>
+
+	    </div>
+	    <div class="navbar-brand"> {{> loginButtons}} </div>
+	   	 
+	  </div>
+	</nav>
+</template>
+
+<template name="website_form">
+	<a class="btn btn-default js-toggle-website-form" href="#">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+	<div id="website_form" class="hidden_div">
+		<form class="js-save-website-form">
+		  <div class="form-group">
+		    <label for="url">Site address</label>
+		    <input type="text" class="form-control" id="url" placeholder="http://www.mysite.com">
+		  </div>
+		  <div class="form-group">
+		    <label for="title">Title</label>
+		    <input type="text" class="form-control" id="title" placeholder="Mysite">
+		  </div>
+		    <div class="form-group">
+		    <label for="description">Description</label>
+		    <input type="text" class="form-control" id="description" placeholder="I found this site really useful for ...">
+		  </div>
+
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</template>
+
+<!-- template that displays several website items -->
+<template name="website_list">
+	{{#if currentUser}}
+		You have posted {{count}} websites 
+	{{/if}}
+    
+	<ol>
+	{{#each websites}}
+		{{>website_item}}
+	{{/each}}
+	</ol>
+</template>
+
+<!-- template that displays individual website entries -->
+<template name="website_item">
+<li class = "website">
+	<a href="{{url}}">{{title}}</a>
+	<p>
+		{{description}} <br />
+		<span class="date"> Added {{createdOn}} </span>
+	</p>
+
+
+	<a href="#" class="btn btn-default js-upvote">
+		<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+	</a>
+		<span class = "vote"> {{vote}} </span>
+
+
+	<a href="#" class="btn btn-default js-downvote">
+		<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+	</a>
+
+	<p align='center'><a href = "/detail/{{_id}}" class="details-link js-set-Id"> Details </a></p>
+
+
+
+
+	<!-- you will be putting your up and down vote buttons in here! -->
+</li>
+</template>
+
+<template name="website_detail">
+	<div class = "container">
+		<!--<span class = "vote"> {{vote}} </span> <br />-->
+
+		<a href="{{url}}">{{title}}</a>
+			<p>
+				{{description}} <br />
+				<span class="date"> Added {{createdOn}}</span>
+				<!-- <input type = "button" class="remove" value="remove a person"> -->
+
+			</p>
+			<p>
+				<form id="comments_form" class = "js-save-comment">
+					<textarea class="form-control" id="comment" name="comment"></textarea>
+					<button type="submit" class="btn btn-default"> Save Comment </button>
+
+				</form>
+			</p>
+
+			{{#each comments}}
+				<p class="comment">{{{comment}}} <span class="date"> {{createdOn}} </span></p>
+			{{/each}}
+			
+	</div>
+	
+</template>
+
+
+<template name="searchBox">
+  <input type="text" id="search-box" class="form-control" placeholder="search" />
+</template>
+
+<template name="searchResult">
+  <div id='search-result'>
+    <div id="search-meta">
+      {{#if isLoading}}
+        searching ...
+      {{/if}}
+    </div>
+
+    {{#each getPackages}}
+    <div class="package">
+      <h4 class="name">
+        <a href="{{url}}" target="_blank">{{{title}}}</a>
+      </h4>
+      <div class="description">
+        {{{description}}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name = "search">
+	<div class="container">
+	{{> searchBox }}
+    {{> searchResult}}
+	</div>
+	
+</template>	
+

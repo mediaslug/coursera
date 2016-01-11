@@ -1,0 +1,79 @@
+/* put your css code here */
+body {
+	background-color: #e5e5e5;
+	}
+h1 {
+	font-style: italic;
+	margin: 50px 0px 50px 0px;
+
+}
+h3 {
+	margin-bottom: 20px;
+}
+p {
+	text-align: justify;
+	margin-bottom: 30px;
+}
+img {
+	margin-top: 30px;
+}
+
+/* Glyph, by Harry Roberts */
+
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "<>";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+     background: #e5e5e5;
+}
+
+/* IMAGES */
+.crop-img{
+  max-height:150px;
+  max-width:200px;
+  margin-right: 20px;
+}
+
+.large-img{
+  max-width:100%;
+}
+
+main{
+    margin-bottom: 50px;
+
+}
+
+/* 
+ * uncomment this for some css3 drop shadows and rounded corners.
+ */
+
+
+.thumbnail,.nav, .large-img, .crop-img{
+  border-radius: 25px;
+
+}
+
+.nav, .navbar-nav {
+	margin-top: 5px;
+		border: 1px solid darkred;
+	/* border-style: solid;
+    border-color: darkred;
+	border-width: 1px; */
+  box-shadow: 5px 5px 5px #888888;
+}
+.thumbnail {
+  box-shadow: 5px 5px 5px #888888;
+}
+.container-fluid {
+	min-height: 60px;
+}

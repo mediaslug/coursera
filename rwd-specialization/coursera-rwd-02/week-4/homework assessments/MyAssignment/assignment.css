@@ -1,0 +1,20 @@
+#species img {
+  max-width: 50%;
+}
+
+a {
+  color: #333333;
+}
+
+a:hover {
+  color: #e75537;
+}
+
+a:focus {
+  color: #e75537;
+}
+
+a.active {
+  background-color: #333333;
+  color: #ffffff;
+}

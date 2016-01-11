@@ -1,0 +1,150 @@
+<!-- This is a first example of using a template -->
+
+<head>
+
+<!-- include our libraries and css files -->
+	<!-- tab icon -->
+	<title>Species</title>
+    <link rel="shortcut icon" href="images/favicon2.ico"> 
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="assignment.js"></script>
+<script src="AnimalsData.js"></script>
+
+<link href="css/bootstrap_simplex.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <!-- NAVBAR -->
+	
+	  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+  
+      <!-- start collapsed navbar-->
+      <div class="navbar-header">
+        <button 
+        type="button" 
+        class="navbar-toggle collapsed" 
+        data-toggle="collapse" 
+        data-target="#main_navbar" 
+        aria-expanded="false"
+		id="menu">Menu</button>
+      </div><!-- / collapsed navbar-->
+
+      <!-- start un-collapsed navbar-->
+      <div 
+         class="collapse navbar-collapse" 
+         id="main_navbar">
+        <ul class="nav navbar-nav">
+       <!--   <li role="" <a href="index.html" >Home</a></li> -->
+          <li role=""><a href="#" id="albums-tab" >Species</a></li>
+		  <li role=""><a href="#" id="photos-tab" >Photos</a></li>
+        </ul>
+      </div><!-- / un-collapsed navbar-->
+
+    </div> <!-- /container -->
+  </nav>
+  
+      <!-- HEADER -->
+	  
+    <div class="container-fluid">
+      <h1>Here are some of the species that (yet) living on our planet  !</h1>
+	</div>
+	
+	    <!-- THUMBNAILS -->
+	
+	      <!-- the content section is empty as we will fill it 
+            via javascript and templates -->
+      <div id="content"  class="container-fluid"  role="main">
+      </div>
+  </div> <!-- / container -->
+
+<!-- Here are our Templates -->
+
+
+<!-- this is the template for the albums view -->
+<!-- 
+    it displays the albums in a bootstrap grid format
+    with one item for each album (using the {{#each}} template expression. 
+    Each album is displayed with a thumbnail image, a name and 
+    the number of photos (using the {{photos.length}} template expression, see my lecture for more details)
+-->
+<script id="albums-template" type="text/x-handlebars-template">
+  <div class="row">
+
+    {{#each clas}}
+    <div class="col-xs-12 col-md-4"> 
+        <div class="album-thumbnail"  data-id="{{@index}}">
+          <img class="crop-img" src="{{thumbnail}}" alt=""/> 
+            
+          <div class="caption">
+              <h4> {{name}} </h4>
+              <p>{{animals.length}} animals</p>
+          </div>
+         </div>
+    </div> <!-- / col -->
+
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+<!-- this is the template for the photos view of a single album -->
+<!-- 
+    like albums view it uses a bootstrap grid format to display the photos in an album
+    
+    Each photos is displayed with anumbnail image, a name and 
+    a description
+-->
+<script id="photos-template" type="text/x-handlebars-template">
+  <div class="row">
+    <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+    <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+    {{#each animals}}
+    <div class="col-xs-12 col-md-3"> 
+     <div class="photo-thumbnail"  data-id="{{@index}}">
+        <img class="crop-img" src="{{image1}}" alt=""/> 
+		<img class="crop-img" src="{{image2}}" alt=""/> 
+          
+         <div class="caption">
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+			
+		  <hr class="style-eight">
+		  
+         </div>
+      </div>
+       
+    </div> <!-- / col -->
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+<!-- this is the template for the view a single photo -->
+<!-- 
+    It is displayed as a large image with title and description
+-->
+<script id="photo-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-xs-12 col-md-12" > 
+	
+        <img class="large-img" src="{{image1}}" alt=""/> 
+         
+			<div class="caption">
+				<h3>{{name}}</h3>
+			</div>
+      </div> <!-- / col -->
+
+  </div> <!-- / row -->
+</script>
+
+
+</body>

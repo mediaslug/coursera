@@ -1,0 +1,9 @@
+.album_cover {
+	width: 24%;
+	border: 25px solid grey;
+}
+
+.photo_list{
+	width:25%;
+	padding:10px;
+}

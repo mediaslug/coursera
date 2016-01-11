@@ -1,0 +1,28 @@
+<html>
+<head> 
+
+	<script src = "jquery-1.11.3.min.js"> </script> 
+
+</head>
+<body> 
+<h1 id = "title"  onclick = "$('#title').html('goodbye');"> hello</h1>
+<h1 id = "title2" onclick = "sayGoodbye();">
+
+		hello</h1>
+
+</body>
+
+	<script type="text/javascript">
+		function sayGoodbye() {
+			console.log('function called');
+			$('#title2').html('Goodbye');
+			$('#title2').click( function() {
+				$("#title2").html('foo');
+				$("#title2").off("click");
+			});
+
+		};
+
+	</script>
+
+</html>

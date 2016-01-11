@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href = "styles.css">
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+	<img class='image' src='image02.jpg'/>
+	</body>
+
+
+<h1 id="title" class="title">food</h1>
+
+	<script type="text/javascript">
+	alert($("#title").html());
+
+  $(".image").click(function() {
+  		console.log("hello");
+  });
+
+$(".image").click(function() {
+  		$(".image").attr('src', 'image01.jpg')
+  });
+
+   $(".image").hover(function() {
+  		$(".image").attr('src', 'image01.jpg')
+  });
+
+   $("#title").hover(function(){$("#title").css("color", "red");});
+   $(".title").text($("chapterTitle"));
+
+	function no(this){ 
+		$(this).html("I'm offended");	
+	}
+
+	function foo() {
+		$('#title').alert(html());
+	}
+</script>
+<h1 id="title2" onmouseenter="foo();">Hello</h1>
+
+
+
+</html>

@@ -1,0 +1,71 @@
+/* put your css code here */
+body{
+	background-color: #F5F5F5;
+}
+
+.navigation{
+	background-color:#fff ;
+}
+
+li.active
+.nav>li>a:hover,
+.nav>li.active>a:hover,
+.nav>li.active>a,
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    text-decoration: none;
+    background-color: #ff5858;
+	color: #fff;
+}
+.nav>li>a{
+	color:#ff5858 ;
+}
+.navbar{
+	margin-bottom: 0px;
+	border-bottom: 2px solid #ff2f2f
+}
+.navbar-header>.navbar-toggle>span{
+	color: #ff2f2f;
+}
+.navbar-header>.navbar-toggle:hover{
+	background-color:#ff5858;
+}
+
+.divisor{
+	border-bottom: 2px solid #c2c2c2;
+}
+.maincontent{
+	margin-top: 25px;
+}
+.breadcrumb>.active>span>a{
+	text-decoration: none;
+	color: #c2c2c2
+}
+.breadcrumb>.active>span{
+	color: #ff2f2f;
+}
+
+.imageland{
+	background: url("img/g_bg.jpg") no-repeat center;
+	height: 425px;
+}
+
+.imageProfile{
+	border-radius: 100%;
+	height: 100px;
+	width: 100px;
+}
+
+h4{
+	color:#337AB9;
+}
+
+.center{
+	text-align: center;
+}
+.justify{
+	text-align: justify;
+}
+.singleborder{
+	padding: 4px;
+	cursor: pointer;
+}
