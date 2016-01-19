@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>Example Project Manipulating the DOM</title>
+
+
+	<meta http-equiv="refresh" content="1">
+	<style type="text/css">
+		div {position:absolute;}
+	</style>
+</head>
+<body id="theBody" onload="show_pattern()">
+
+	<script type="text/javascript">
+		function show_pattern() {
+			var top_position = 25;
+			var left_position = 25;
+			var width = 500;
+			var height = 500;
+			var color_list = ["red","orange","yellow","green","blue", "indigo", "violet"];
+			var theBody = document.getElementById("theBody");
+
+			while (width > 50) {
+				// create the div
+				var myDiv = document.createElement("div");
+
+				// get a random number to pick a color from the array
+				var random_color = Math.random() * 7;
+				random_color = Math.floor(random_color);
+
+				myDiv.style.top = top_position+"px";
+				myDiv.style.left = left_position+"px";
+				myDiv.style.width = width+"px";
+				myDiv.style.height = height+"px";
+				myDiv.style.background = color_list[random_color];
+				theBody.appendChild (myDiv);
+				top_position += 10;
+				left_position +=10;
+				width -= 20;
+				height -= 20;
+
+
+
+			}
+		}
+	</script>
+</body>
+</html>

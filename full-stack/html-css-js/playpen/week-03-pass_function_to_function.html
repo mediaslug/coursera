@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script type="text/javascript">
+		function check (a,b) {
+			if (b!=0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		function myDivide(fn, num, div) {
+			if (fn(num,div)) {
+				alert("it's ok.")
+				return num/div;
+			} else {
+				alert ("not ok");
+				return false;
+			}
+		}
+
+		result = myDivide(check,44,0);
+		alert(result);
+
+
+
+
+	</script>
+
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>

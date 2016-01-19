@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Playing Around with some of the examples from week 3</title>
+
+	<script type="text/javascript">
+		function counter() {
+			var count = 0;
+
+			alert("foo");
+
+			return function() {
+				count++;
+				alert(count)
+			}
+		}
+
+		var count = counter();
+		count();
+		count();
+		count();
+	</script>
+</head>
+<body>
+
+</body>
+</html>
