@@ -66,6 +66,21 @@
                     <li> <a href="contactus.html"> <i class="fa fa-envelope-o"></i>
  Contact</a></li>
                 </ul>
+
+
+                 <form class="form-inline nav navbar-nav navbar-right" role="form">
+                    <div class = "form-group">
+                        <label class="sr-only" for="email"> Email </label>
+                        <input type="text" id="email" name="email" placeholder = "Email">
+                    </div>
+                   <div class = "form-group">
+                        <label class="sr-only" for="email"> Password </label>
+                        <input type="password" id="password" name="password" placeholder = "Password">
+                    </div>
+                    <label class="white"><input type="checkbox" id="remember" name="remember"> Remember Me</label>
+                    <input type = "submit" class = "btn btn-info" value = "Sign In"> 
+
+                </form>
             </div>
             
         </div>
@@ -90,7 +105,9 @@
 
                 </div>
                 <div class="col-xs-12 col-sm-2">
+                    <p style="padding:40px;"></p>
 
+                    <a href = "#reserve" class="btn btn-warning">Reserve Table </a>
                 </div>
             </div>
         </div>
@@ -118,11 +135,7 @@
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">
-                            Uthappizza 
-                            <span class="label label-danger">Hot</span>
-                            <span class="badge">$4.99</span>
-                        </h2> 
+                        <h2 class="media-heading">Uthappizza</h2>
                         <p>A unique combination of Indian Uthappam (pancake) and
                           Italian pizza, topped with Cerignola olives, ripe vine
                           cherry tomatoes, Vidalia onion, Guntur chillies and
@@ -130,8 +143,8 @@
                         <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
                     </div>
                 </div>
+             </div>
         </div>
-
 
         <div class="row row-content">
             <div class="col-xs-12 col-sm-3">
@@ -151,6 +164,7 @@
                 <h3 align=center>Meet our Culinary Specialists</h3>
             </div>
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+                
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
@@ -158,6 +172,8 @@
                          src="img/alberto.png" alt="Alberto Somayya">
                         </a>
                     </div>
+
+
                     <div class="media-body">
                         <h2 class="media-heading">Alberto Somayya</h2>
                         <h4>Executive Chef</h4>
@@ -169,9 +185,78 @@
                         <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
                     </div>
                 </div>
+                
             </div>
         </div>
-    </div>
+        
+        <a name="reserve"></a>
+
+         <div class="row row-content">
+                <div class="col-xs-12 col-sm-3">
+                    <h3>Reserve a Table </h3>
+                </div>  
+                <div class = "col-xs-12 col-sm-9">
+
+                    <form>
+                        <div class = "row form-group">
+                            <div class = "col-xs-12 col-sm-2">
+                                <strong>Number of Guests: </strong>&nbsp;
+                            </div> 
+                            <div class = "col-xs-12 col-sm-8">
+                                <input type = "radio" name = "reservationNumber" id="one">  <label class="radio-inline" for = "one"> 1 &nbsp;</label> 
+                                <input type = "radio" name = "reservationNumber" id="two">  <label class="radio-inline"for = "two"> 2 &nbsp;</label> 
+                                <input type = "radio" name = "reservationNumber" id="three"><label class="radio-inline" for = "three"> 3 &nbsp;</label>
+                                <input type = "radio" name = "reservationNumber" id="four"> <label class="radio-inline" for = "four"> 4 &nbsp;</label> 
+                                <input type = "radio" name = "reservationNumber" id="five"> <label for = "five"> 5 &nbsp;</label> 
+                                <input type = "radio" name = "reservationNumber" id="six">  <label for = "six"> 6 &nbsp;</label> 
+                            </div> 
+                         </div>
+
+                         <div class = "row form-group">
+                            <div class = "col-xs-12 col-sm-2">
+                                <strong> Date and <br />Time:</strong> 
+                            </div>
+                            
+                            <div class = "col-xs-12 col-sm-3">
+
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess4"></label>
+                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Date">
+                                    <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+                                </div>
+                            </div>
+
+                            <div class = "col-xs-12 col-sm-3">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess4"></label>
+                                    <input type="text" class="form-control" id="inputSuccess4" placeholder="Time">
+                                    <span class="glyphicon glyphicon-time form-control-feedback"></span>
+                                </div>
+                            </div>
+                            </div>
+                                
+
+                        <input type="submit" value="Reserve" class="btn btn-primary">
+
+            
+
+                    </form>
+
+                   <div style="margin:20px 0px 0px 0px" class="alert alert-warning alert-dismissable" role="alert">
+                        <strong>Warning</strong>: Please call us to reserve for more than 6 guests.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    </div>
+
+
+
+                        
+                </div>
+
+
+        </div>
+
+    </div> <!-- End container -->
 
     <footer>
         <div class="container">
@@ -215,16 +300,7 @@
             </div>
         </div>
     </footer>
-    <form>
 
-    <div class="input-group">
-        <div class="input-group-addon">+</div>
-        <input type="tel" class="form-control”
-            id="code" name="code”
-            placeholder="Code">
-</div>
-
-</form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
