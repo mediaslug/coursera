@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array functions</title>
+	<meta charset = "utf-8">	
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+
+function concatenate(x, i, array) {
+	// in addition to the element in the array, the function has access 
+	// to the index number and to the full array
+	alert( x + i + array);
+
+}
+	
+	var pets = ["dog", "cat", "horse", "rabbit", "hamster"]
+	for (var i = 0; i < pets.length; i++) {
+		//alert(pets[i]);
+	};
+
+	// a simpler way to handle foreach loops
+	pets.forEach(alert);
+
+	// calling it with a custom function
+	pets.forEach(concatenate);
+
+	// can also be done with an anonymous function like so:
+
+	var numbers = [1,2,3,4];
+	numbers.forEach(function(elem, idx, arr) {
+		arr[idx] = elem * elem // replace the element with its square
+
+	});
+
+	alert (numbers); // print out the array as it exists now.
+
+ /* the map function stores the result of each execution of runction into an array it returns*/
+
+ var square = function(el) { return el*el;}
+ var numbers = [1,2,3]
+ var results = numbers.map(square); // this does not affect the original array
+ alert(results);
+
+ 
+</script>
+
+
+</body>
+</html>
