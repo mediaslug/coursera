@@ -2,7 +2,7 @@
 <html>
 <head>
 
-	<title>Homework 3</title>
+	<title>Homework 3.2: Matching Game</title>
 	<meta charset = "utf-8">
 	<style type="text/css">
 		img {
@@ -24,62 +24,40 @@
 
 <body onload = "generateFaces()">
 	<h1>Matching Game</h1>
-	<p>Click on the extra face on the left</p>
+	<p>Click on the extra smiling face on the left</p>
 
 <div id = "leftSide"></div>
 <div id = "rightSide"></div>
 
 	<script type="text/javascript">
-		var numberOfFaces = 5;
+
+		var numberOfFaces = 5; // the total number of faces to be drawn
+
+		// grab the left side div
 		var theLeftSide = document.getElementById("leftSide");
 
 		function generateFaces() {
-			for (var i = 0; i < numberOfFaces; i++) {
-				console.log(i);
+			for (var i = 0; i < numberOfFaces; i++) { // loop through for numOfFaces times
+				
+				// generate random numbers for the possible position of the images
 				var random_top = Math.random() * 400;
 				var random_left = Math.random() * 400;
 
+				// returns the largest integer less than or equal to a given number
 				random_top = Math.floor(random_top);
 				random_left = Math.floor(random_left);
 
+				// create image and add attributes
 				var img = document.createElement("img");
 				img.src = "smile.png"
 				img.id = "smile" + "-" + random_left + "-" + random_top;
-			
+				
+				// position the element and add it to the div
 				img.style.top = random_top + "px"
 				img.style.left = random_left + "px"
 				theLeftSide.appendChild(img);
-				// alert(img.id);
-			}
-
-			// clone the left side node
-			var leftSideImages = theLeftSide.cloneNode(true);
-			leftSideImages.removeChild(leftSideImages.lastChild);
-			rightSide.appendChild(leftSideImages);
-
-			theLeftSide.lastChild.onclick = function nextLevel(event) {
-				event.stopPropagation();
-				numberOfFaces+=5;
-				deleteChildren();
-				generateFaces();
-			}
-
-			var theBody = document.getElementsByTagName("body")[0];
-			theBody.onclick = function gameOver() {
-				alert("Game Over!");
-				theBody.onclick = null;
-				theLeftSide.lastChild.onclick = null;
 			}
 			
-		}
-
-		function deleteChildren() {
-			while (theLeftSide.firstChild) {   
-    			theLeftSide.removeChild(theLeftSide.firstChild);
-			}
-			while (theRightSide.firstChild) {    
-    			theRightSide.removeChild(theRightSide.firstChild);
-			}
 		}
 
 
