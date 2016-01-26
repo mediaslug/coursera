@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>clone node example</title>
+	<meta charset = "utf-8">	
+</head>
+
+<body>
+
+<script type="text/javascript">
+	function myFunction() {
+		var li = document.createElement("li")
+		var theNode = document.getElementById("myList").lastChild;
+		var theClone = theNode.cloneNode(true);
+		document.getElementById("myList").appendChild(theClone);
+		alert(theNode);
+	}
+</script>
+
+this works as long as there is no whitespace
+<ul id="myList"><li> good morning</li><li> hello</li><li> foo</li></ul>
+<p> click the button to clone the node </p>
+<button onclick = "myFunction()">copy it</button>
+
+</body>
+</html>

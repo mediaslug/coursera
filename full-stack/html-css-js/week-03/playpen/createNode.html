@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body onclick = "append()">
+<p>foo</p>
+
+<button onclick="insertNewText()">Insert</button>
+<p id = "myText"> </p>
+
+
+<script type="text/javascript">
+	// adding a simple element to a parent
+	element = document.createElement("hr");
+	body = document.getElementsByTagName("body")[0];
+	body.appendChild(element);
+
+	// alternatively do it all in one statement. this one adds a textNode, rather than an element
+	para = document.getElementsByTagName("p")[0].appendChild(document.createTextNode("bar"));
+
+
+	// prepend
+	newElement = document.createElement("img");
+	newElement.src = "smile.png";
+	destParent = document.getElementsByTagName("body")[0];
+	destParent.insertBefore(newElement, destParent.firstChild);
+
+
+// ******************************* insert new hr via a function example *********************************
+
+function insertNewText() {
+	var newItem = document.createElement("hr");
+	var destParent = document.getElementsByTagName("body")[0];
+	destParent.insertBefore(newItem, destParent.firstChild)
+}
+
+//***************************** apend child **************************************
+function append() {
+	var result = document.createTextNode("this is dynamically added text");
+	document.getElementById("myText").appendChild(result);
+}
+</script>
+
+
+
+
+</body>
+</html>

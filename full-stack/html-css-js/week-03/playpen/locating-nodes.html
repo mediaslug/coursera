@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body id="theBody"><p id="cuteText">Click on a button to change the color</p><p id="demo"></p>
+	<h2> i am h2 </h2>
+
+
+	<form>
+		<input onclick = "childNodeApproach()" type="button" value="Change using childNode approach">
+		<input type="button" onclick = "tagNameApproach()" value ="Change using tagName approach">
+		<input type = "button" onclick = "idApproach()" value = "Change using IdApproach">
+
+	</form>
+
+	<script type="text/javascript">
+
+	
+	function childNodeApproach(){
+		//document.childNodes[0].childNodes[1].childNodes[1].style.color="red";
+		document.getElementById("theBody").childNodes[0].style.color = "red"
+	}
+
+	function tagNameApproach(){
+		document.getElementsByTagName('h2')[0].style.color = "yellow";
+	}
+
+	function idApproach(){
+		document.getElementById("cuteText").style.color = "green";
+		
+	}
+
+
+</script>
+</body>
+</html>

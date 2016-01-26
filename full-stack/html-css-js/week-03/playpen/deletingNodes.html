@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title></title>
+		<meta charset = "utf-8">	
+
+</head>
+<body  id="theBody">
+	<p id="firstParagraph">foo</p>
+<p id="secondParagraph">bar</p>
+<p id = "myText"> </p>
+
+<button onclick="delete1()">delete 1</button>
+<button onclick="delete2()">delete 2</button>
+<button onclick="delete3()">delete 3</button>
+<button onclick="deleteAll()">delete all</button>
+
+
+
+<script type="text/javascript">
+
+	// tell the parent node to delete its child element
+	// something like this example code
+
+	/*
+	// find the node
+	thisNode = getElementById("myPara");
+
+	// tell the node's parent which child to delete
+	thisNode.parentNode.removeChild(thisNode);
+	*/
+
+
+	// we will look at three example pieces of code for deleting elements
+	function delete1() {
+		// grab the child by id
+		var theNode = document.getElementById("firstParagraph");
+	 	theNode.parentNode.removeChild(theNode);
+		
+	}
+	
+	function delete2() {
+
+		// grab the child by tag name
+		var theNode = document.getElementsByTagName("p")[0];
+		theNode.parentNode.removeChild(theNode);
+	
+	}
+
+	function delete3() {
+		// grab the parent directly
+		 var the_parent = document.getElementById("theBody");
+		the_parent.removeChild(the_parent.firstChild);
+	
+	}
+
+	function deleteAll() {
+		// this should delete all the children from the body
+
+		// grab the parent
+		var theBody = document.getElementById("theBody");
+		while (theBody.firstChild) {
+			theBody.removeChild(theBody.firstChild);
+	
+		}
+		
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -56,7 +56,7 @@
 
 				// create image and add attributes
 				var img = document.createElement("img");
-				img.src = "smile.png"
+				img.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png"
 				img.id = "smile" + "-" + random_left + "-" + random_top;
 				
 				// position the element and add it to the div
@@ -101,11 +101,12 @@
 		} // end generateFaces()
 
 		function deleteFaces() {
-			while (theLeftSide.firstChild) {   
-    			theLeftSide.removeChild(theLeftSide.firstChild);
+
+			while (theLeftSide.firstChild) {
+				theLeftSide.removeChild(theLeftSide.firstChild);
 			}
-			while (theRightSide.firstChild) {    
-    			theRightSide.removeChild(theRightSide.firstChild);
+			while (theRightSide.firstChild) {
+				theRightSide.removeChild(theRightSide.firstChild);
 			}
 		} // end deleteFaces()
 	</script>
