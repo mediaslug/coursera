@@ -91,3 +91,9 @@ body{
 .carousel-caption {
     margin-left: 100px;
 }
+
+#carouselButtons {
+    right:0px;
+    position: absolute;
+    bottom: 0px;
+}

@@ -291,6 +291,17 @@
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+
+                <!-- carousel pause/play controls -->
+
+                <div class="btn-group" id="carouselButtons">
+                    <button class="btn btn-danger btn-xs" id="carousel-pause">
+                        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-danger btn-xs" id="carousel-play">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                </div>
                 
         </div> 
     </div> <!-- / end the carousel row -->
@@ -429,7 +440,17 @@
 	<script type = "text/javascript" src="js/jquery.js"></script>
     <script type = "text/javascript" src="js/bootstrap.min.js"></script>
 
-
+    <script>
+        $(document).ready(function(){
+            $("#mycarousel").carousel( { interval: 1000 } );
+                          $("#carousel-pause").click(function(){
+                $("#mycarousel").carousel('pause');
+            });
+                        $("#carousel-play").click(function(){
+                $("#mycarousel").carousel('cycle');
+            });
+        });
+    </script>
 </body>
 
 </html>
