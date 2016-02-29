@@ -16,6 +16,9 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     del = require('del');
 
+// require ng-annotate
+var ngannotate = require('gulp-ng-annotate');
+
 // add the code for the JSHint task, the Clean task and the default task as follows
 
 gulp.task('jshint', function() {
@@ -40,7 +43,7 @@ gulp.task('usemin',['jshint'], function () {
   return gulp.src('./app/menu.html')
       .pipe(usemin({
         css:[minifycss(),rev()],
-        js: [uglify(),rev()]
+        js: [ngannotate(),uglify(),rev()]
       }))
       .pipe(gulp.dest('dist/'));
 });
