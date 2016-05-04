@@ -116,7 +116,7 @@
                             
                         </div>
                     </div>
-                    <div class="form-group" ng-class="{'has-error': invalidSelection}">
+                    <div class="form-group" ng-class="{'has-error': invalidChannelSelection}">
                        <div class="checkbox col-sm-5 col-sm-offset-2">
                             <label class="checkbox-inline">
                                 <input type="checkbox" name="approve" value=""
@@ -125,7 +125,7 @@
                             </label>
                         </div>
                         <div class="col-sm-3 col-sm-offset-1" ng-show="feedback.agree">
-                            <select class="form-control" 
+                            <select class="form-control"  ng-class = "{'has-error': invalidChannelSelection }"
                                     ng-model="feedback.mychannel"
                                     ng-options="channel.value as channel.label for channel in channels">
                                 <option value ="">Tel. or Email</option>
@@ -163,7 +163,7 @@
 
     </div>
 
-<script src="scripts/main-4518003021.js"></script>
+<script src="scripts/main-055a0c3102.js"></script>
 
 </body>
 
