@@ -55,18 +55,27 @@
                     <p>{{comment.comment}}</p>
                     <footer> {{comment.author}}, {{comment.date | date }}</footer>
                 </blockquote>
+  
             </div>
          <div class="col-xs-12 col-sm-9 col-xs-offset-1" ng-controller="DishCommentController">
+                <blockquote ng-show="!commentForm.comment.$pristine && !commentForm.$invalid">
+                     
+             
+            
+                    <p>{{newComment.rating}}</p>
+                    <p> {{newComment.comment}}</p>
+                    <footer>{{newComment.author}}, {{newComment.tempdate|date}}</footer>
+                </blockquote>
 
                 <form class="form-horizontal" name="commentForm" role="form" ng-submit="submitComment()" novalidate>
-                    <div class="form-group" ng-class="{ 'has-error': commentForm.name.$error.required && !commentForm.name.$pristine }">
+                    <div class="form-group" ng-class="{ 'has-error': commentForm.author.$error.required && !commentForm.author  .$pristine }">
 
                         <label for="name" class="col-sm-2 control-label">Your Name</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="author" name="author" 
                                placeholder="Enter Name"
                                ng-model="newComment.author" required>
-                            <span ng-show="commentForm.name.$error.required && !commentForm.name.$pristine" class="help-block">Your name is required.</span>
+                            <span ng-show="commentForm.author.$error.required && !commentForm.author.$pristine" class="help-block">Your name is required.</span>
                         </div>
                     </div>
                     
@@ -99,9 +108,9 @@
                     </div>
                 </form>
        <h3> Your Current Feedback</h3>
-        {{newComment.author}}
-             {{newComment.rating}}
-             {{newComment.comment}}
+       <p>{{newComment.rating}}</p>
+                    <p> {{newComment.comment}}</p>
+                    <footer>{{newComment.author}}</footer>
         </div>
                 </div>
 
