@@ -9,11 +9,15 @@
          content must come *after* these tags -->
     <title>Ristorante Con Fusion: Menu</title>
         <!-- Bootstrap -->
+    
+    <!-- build:css styles/main.css -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="styles/bootstrap-social.css" rel="stylesheet">
     <link href="styles/mystyles.css" rel="stylesheet">
+    <!-- endbuild -->
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -96,7 +100,7 @@
                         <div class="col-sm-10" ng-class="{ 'has-error': commentForm.comment.$error.required && !commentForm.comment.$pristine }">
                             <textarea class="form-control" id="feedback" name="comment" rows="12"
                                       ng-model="newComment.comment" required></textarea>
-                            <span ng-show="commentForm.comment.$error.required && !commentForm.comment.$pristine" class="help-block">Your name is required.</span>
+                            <span ng-show="commentForm.comment.$error.required && !commentForm.comment.$pristine" class="help-block">Your comment is required.</span>
 
                         </div>
                     </div> 
@@ -107,15 +111,9 @@
                         </div>
                     </div>
                 </form>
-       <h3> Your Current Feedback</h3>
-       <p>{{newComment.rating}}</p>
-                    <p> {{newComment.comment}}</p>
-                    <footer>{{newComment.author}}</footer>
-        </div>
-                </div>
-
-
-
+      
+            </div>
+        </div> <!-- / row -->
     </div>
 
     <!-- build:js scripts/main.js -->
