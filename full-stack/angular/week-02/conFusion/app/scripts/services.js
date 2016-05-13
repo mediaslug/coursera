@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('confusionApp')
-    .factory('menuFactory', function() {
+    .service('menuFactory', function() {
         var dishes=[
              {
               name:'Uthapizza',
@@ -43,13 +43,13 @@ angular.module('confusionApp')
                    }                                                          ]
             },
             {
-              name:'Zucchipakoda',
-               image: 'images/zucchipakoda.png',
-              category: 'appetizer',
-               label:'',
-              price:'1.99',
-              description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
-              comments: [
+                name:'Zucchipakoda',
+                image: 'images/zucchipakoda.png',
+                category: 'appetizer',
+                label:'',
+                price:'1.99',
+                description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
+                comments: [
                    {
                        rating:5,
                        comment:"Imagine all the eatables, living in conFusion!",
@@ -83,7 +83,7 @@ angular.module('confusionApp')
             },
             {
               name:'Vadonut',
-               image: 'images/vadonut.png',
+              image: 'images/vadonut.png',
               category: 'appetizer',
                label:'New',
               price:'1.99',
@@ -161,14 +161,11 @@ angular.module('confusionApp')
                    }                                                          ]
             }
             ];
-    var menufac = {};
-    menufac.getDishes = function() {
+    this.getDishes = function() {
         return dishes;
     }
     
-    menufac.getDish = function(index) {
+    this.getDish = function(index) {
         return dishes[index];
     }
-
-    return menufac;
 });
