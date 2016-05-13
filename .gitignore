@@ -3,3 +3,12 @@
 Thumbs.db
 */node_modules/
 */bower_components/
+
+full-stack/angular/week-01/conFusion_first_session/bower_components/.DS_Store
+full-stack/angular/week-02/conFusion-round-1-grunt/bower_components/.DS_Store
+full-stack/angular/week-02/conFusion-round-1-grunt/node_modules/
+full-stack/angular/week-02/conFusion-round-1/bower_components/.DS_Store
+full-stack/angular/week-02/conFusion-round-1/node_modules/.DS_Store
+full-stack/angular/week-02/conFusion-round-1/node_modules/browser-sync/.DS_Store
+full-stack/angular/week-02/conFusion/bower_components/.DS_Store
+full-stack/angular/week-02/conFusion/node_modules/
