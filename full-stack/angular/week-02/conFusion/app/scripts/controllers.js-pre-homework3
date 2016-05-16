@@ -8,8 +8,7 @@ angular.module('confusionApp')
             $scope.filtText = '';
             $scope.showDetails = false;
 
-            $scope.dishes= menuFactory.getDishes();
-
+            $scope.dishes=menuFactory.getDishes();
                         
             $scope.select = function(setTab) {
                 $scope.tab = setTab;
@@ -68,32 +67,55 @@ angular.module('confusionApp')
             };
         }])
 
-        .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
-
+        .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory',  function($scope, $stateParams, menuFactory) {
+//            $scope.dish = menuFactory.getDish(1);
             var dish= menuFactory.getDish(parseInt($stateParams.id,10));
-            
             $scope.dish = dish;
             
+            
         }])
 
-        .controller('DishCommentController', ['$scope', function($scope) {
+        .controller('DishCommentController', ['$scope', 'menuFactory' , function($scope, menuFactory) {
+
             
-            $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+            //Step 1: Create a JavaScript object to hold the comment from the form
+            $scope.newComment = {
+                rating:"",
+                comment:"",
+                author:"",
+                date:""
+            }
             
+            // set default rating
+            $scope.newComment.rating = 5;
+            
+            // function to process form submission
             $scope.submitComment = function () {
                 
-                $scope.mycomment.date = new Date().toISOString();
-                console.log($scope.mycomment);
+                // set the date
+                $scope.newComment.date = new Date().toISOString();
                 
-                $scope.dish.comments.push($scope.mycomment);
+                // Step 3: Push your comment into the dish's comment array
+                $scope.dish.comments.push($scope.newComment);
                 
+                console.log($scope.newComment);
+
+                //Step 4: reset your form to pristine
                 $scope.commentForm.$setPristine();
                 
-                $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+                //Step 5: reset your JavaScript object that holds your comment
+                console.log("clear the object");
+                $scope.newComment = {
+                    rating:"",
+                    comment:"",
+                    author:"",
+                    date:""
+                }
+                
+                // reset the default rating
+                $scope.newComment.rating = 5;
+                console.log($scope.newComment)
             }
         }])
-
-        // implement the IndexController and About Controller here
-
 
 ;
