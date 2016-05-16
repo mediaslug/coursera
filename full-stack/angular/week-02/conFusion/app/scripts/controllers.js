@@ -84,16 +84,21 @@ angular.module('confusionApp')
                 
                 $scope.mycomment.date = new Date().toISOString();
                 console.log($scope.mycomment);
-                
+
                 $scope.dish.comments.push($scope.mycomment);
-                
+
                 $scope.commentForm.$setPristine();
-                
+
                 $scope.mycomment = {rating:5, comment:"", author:"", date:""};
             }
         }])
 
         // implement the IndexController and About Controller here
+
+    .controller('IndexController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+            
+        
+    }])
 
 
 ;
