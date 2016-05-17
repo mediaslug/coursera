@@ -95,12 +95,21 @@ angular.module('confusionApp')
 
         // implement the IndexController and About Controller here
 
-    .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
+        // Implement the IndexController required for home.html
+
+        .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory,      
+        corporateFactory) {
             
-        $scope.promotion = menuFactory.getPromotion(0);
-        $scope.featuredDish = menuFactory.getDish(0);
-        $scope.chef = corporateFactory.getLeader(3);
-    }])
+            $scope.promotion = menuFactory.getPromotion(0);
+            $scope.featuredDish = menuFactory.getDish(0);
+            $scope.leader = corporateFactory.getLeader(3);
+        }])
+
+        // Implement the AboutController required for aboutus.html
+
+        .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+            $scope.leadership = corporateFactory.getLeaders();
+        }])
 
 
 ;

@@ -197,6 +197,7 @@ angular.module('confusionApp')
                     return dishes[index];
                 };
     
+    
                 // implement a function named getPromotion
                 // that returns a selected promotion.
     
@@ -206,6 +207,9 @@ angular.module('confusionApp')
     
                         
         })
+
+// Complete the corporateFactory to enable retrieval of information about all the leaders, 
+// or a selected leader (specified with a parameter)
 
         .factory('corporateFactory', function() {
     
@@ -243,6 +247,8 @@ angular.module('confusionApp')
                 
             ];
      
+    // Implement the getPromotion function to obtain information about a selected promotion (specified with a parameter)
+
             // Implement two functions, one named getLeaders,
             // the other named getLeader(index)
             // Remember this is a factory not a service
