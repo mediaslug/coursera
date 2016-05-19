@@ -34,7 +34,7 @@ gulp.task('default', ['clean'], function() {
 
 // the code for the usemin, imagemin and copyfonts tasks:
 gulp.task('usemin',['jshint'], function () {
-  return gulp.src('./app/dishdetail.html')
+  return gulp.src('./app/**/*.html')
       .pipe(usemin({
         css:[minifycss(),rev()],
         js: [ngannotate(),uglify(),rev()]
@@ -79,7 +79,7 @@ gulp.task('browser-sync', ['default'], function () {
    browserSync.init(files, {
       server: {
          baseDir: "dist",
-         index: "dishdetail.html"
+         index: "index.html"
          // index: "contactus.html"
          //index: "menu.html"
 

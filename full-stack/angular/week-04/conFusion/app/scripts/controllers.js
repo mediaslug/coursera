@@ -8,7 +8,13 @@ angular.module('confusionApp')
             $scope.filtText = '';
             $scope.showDetails = false;
 
-            $scope.dishes= menuFactory.getDishes();
+            $scope.dishes= [];
+            menuFactory.getDishes()
+            .then(
+                function(response) {
+                    $scope.dishes = response.data;
+                }
+            );
 
                         
             $scope.select = function(setTab) {
@@ -72,7 +78,14 @@ angular.module('confusionApp')
 
             var dish= menuFactory.getDish(parseInt($stateParams.id,10));
             
-            $scope.dish = dish;
+            $scope.dish = {};
+            menuFactory.getDish(parseInt($stateParams.id,10))
+            .then(
+                function(resposne) {
+                    $scope.dish = resposne.data;
+                    $scope.showDish = true;
+                }
+            );
             
         }])
 
@@ -101,7 +114,16 @@ angular.module('confusionApp')
         corporateFactory) {
             
             $scope.promotion = menuFactory.getPromotion(0);
-            $scope.featuredDish = menuFactory.getDish(0);
+            
+            $scope.featuredDish = {};
+            menuFactory.getDish(0)
+            .then(
+                function(response) {
+                    $scope.featuredDish = response.data;
+                    $scope.showDish = true;
+                }
+            );
+            
             $scope.leader = corporateFactory.getLeader(3);
         }])
 
