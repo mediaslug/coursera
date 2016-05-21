@@ -9,30 +9,11 @@ angular.module('confusionApp')
             $scope.showDetails = false;
             
             // don't try to show menu by default
-            $scope.showMenu = false;
+            $scope.showMenu = true;
             $scope.message = "Loading ...";
             
             
-            $scope.dishes= [];
-            menuFactory.getDishes()
-            .then(
-                
-                // if success
-                function(response) {
-                    
-                    $scope.dishes = response.data;
-                    
-                    // received response so, yes show menu
-                    $scope.showMenu = true;
-
-                }, 
-                
-                // if failure
-                function(response) {
-                    // set the message to the response error 
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
-                }
-            );
+            $scope.dishes= menuFactory.getDishes().query();
 
                         
             $scope.select = function(setTab) {
@@ -96,24 +77,12 @@ angular.module('confusionApp')
 
             var dish= menuFactory.getDish(parseInt($stateParams.id,10));
             
-            $scope.dish = {};
-            $scope.showDish = false;
+            
+            $scope.showDish = true;
             $scope.message="Loading ...";
             
-            menuFactory.getDish(parseInt($stateParams.id,10))
-            .then(
-                
-                // success
-                function(resposne) {
-                    $scope.dish = resposne.data;
-                    $scope.showDish = true;
-                },
-                
-                // failure
-                function(response) {
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
-                }
-            );
+            $scope.dish = menuFactory.getDishes.get({id:parseInt($stateParams.id,10)});
+     
             
         }])
 
@@ -141,21 +110,10 @@ angular.module('confusionApp')
             
             $scope.promotion = menuFactory.getPromotion(0);
             
-            $scope.featuredDish = {};
-            $scope.showDish = false;
+            $scope.showDish = true;
             $scope.message="Loading ...";
             
-            menuFactory.getDish(0)
-            .then(
-                function(response) {
-                    $scope.featuredDish = response.data;
-                    $scope.showDish = true;
-                }, 
-                
-                function(response) {
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
-                }
-            );
+            $scope.featuredDish = menuFactory.getDishes().get({id:0});
             
             $scope.leader = corporateFactory.getLeader(3);
         }])
