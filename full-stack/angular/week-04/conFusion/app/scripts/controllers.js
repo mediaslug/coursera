@@ -9,11 +9,19 @@ angular.module('confusionApp')
             $scope.showDetails = false;
             
             // don't try to show menu by default
-            $scope.showMenu = true;
+            $scope.showMenu = false;
             $scope.message = "Loading ...";
             
             
-            $scope.dishes= menuFactory.getDishes().query();
+            menuFactory.getDishes().query(
+                function(response) {
+                    $scope.dishes = response;
+                    $scope.showMenu = true;
+                },
+                function(response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                }
+            );
 
                         
             $scope.select = function(setTab) {
@@ -75,13 +83,23 @@ angular.module('confusionApp')
 
         .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
+           // var dish= menuFactory.getDish(parseInt($stateParams.id,10));
             
             
             $scope.showDish = true;
             $scope.message="Loading ...";
             
-            $scope.dish = menuFactory.getDishes.get({id:parseInt($stateParams.id,10)});
+            $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)}).$promise.then(
+                function(response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                }, 
+                
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+
+                }
+            );
      
             
         }])
@@ -110,10 +128,20 @@ angular.module('confusionApp')
             
             $scope.promotion = menuFactory.getPromotion(0);
             
-            $scope.showDish = true;
+            $scope.showDish = false;
             $scope.message="Loading ...";
             
-            $scope.featuredDish = menuFactory.getDishes().get({id:0});
+            $scope.featuredDish = menuFactory.getDishes().get({id:0}).$promise.then(
+            
+                function(response) {
+                    $scope.featuredDish = response;
+                    $scope.showDish = true;
+                }, 
+                
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
             
             $scope.leader = corporateFactory.getLeader(3);
         }])
