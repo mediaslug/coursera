@@ -127,9 +127,19 @@ angular.module('confusionApp')
         .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory,      
         corporateFactory) {
             
-            $scope.promotion = menuFactory.getPromotion().get({id:0});
-            console.log($scope.promotion)
+            /* show the promotion */
+            // this works as well. not sure what the correct implementation is:
+            // $scope.promotion = menuFactory.getPromotion().query();
+
+            // opted to go with the get method, since i know i only want one dish
+            $scope.showPromotion = true;
+            $scope.message="Loading ...";
             
+            $scope.promotion = menuFactory.getPromotion().get({id:0})
+            
+            
+            /* show the featured dish */
+
             $scope.showDish = false;
             $scope.message="Loading ...";
             
@@ -145,6 +155,8 @@ angular.module('confusionApp')
                 }
             );
             
+            /* show the executive chef */
+
             $scope.leader = corporateFactory.getLeader(3);
         }])
 
