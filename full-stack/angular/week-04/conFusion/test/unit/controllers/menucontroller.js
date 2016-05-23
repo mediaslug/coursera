@@ -40,7 +40,8 @@ describe('Controller: MenuController', function () {
     MenuController = $controller('MenuController', {
       $scope: scope, menuFactory: menuFactory
     });
-            $httpBackend.flush();
+
+      $httpBackend.flush();
 
   }));
 
