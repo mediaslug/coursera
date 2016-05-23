@@ -127,7 +127,8 @@ angular.module('confusionApp')
         .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory,      
         corporateFactory) {
             
-            $scope.promotion = menuFactory.getPromotion(0);
+            $scope.promotion = menuFactory.getPromotion().get({id:0});
+            console.log($scope.promotion)
             
             $scope.showDish = false;
             $scope.message="Loading ...";
