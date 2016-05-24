@@ -163,7 +163,8 @@ angular.module('confusionApp')
         // Implement the AboutController required for aboutus.html
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-            $scope.leadership = corporateFactory.getLeaders();
+            $scope.leadership = corporateFactory.getLeaders().query();
+            console.log(corporateFactory.getLeaders().query());
         }])
 
 
