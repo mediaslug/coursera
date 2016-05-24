@@ -157,14 +157,13 @@ angular.module('confusionApp')
             
             /* show the executive chef */
 
-            $scope.leader = corporateFactory.getLeader(3);
+            $scope.leader = corporateFactory.getLeaders().get({id:3});
         }])
 
         // Implement the AboutController required for aboutus.html
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
             $scope.leadership = corporateFactory.getLeaders().query();
-            console.log(corporateFactory.getLeaders().query());
         }])
 
 
