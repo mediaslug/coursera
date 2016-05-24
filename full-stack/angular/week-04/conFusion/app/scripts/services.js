@@ -13,7 +13,7 @@ angular.module('confusionApp')
                 return $resource(baseURL+"promotions/:id", null);
             };
                         
-        }]);
+        }])
 
         // Complete the corporateFactory to enable retrieval of information about all the leaders, 
         // or a selected leader (specified with a parameter)
@@ -27,5 +27,16 @@ angular.module('confusionApp')
             }
             return corpfac;
         }])
+        
+        .factory('feedbackFactory', ['$resource', 'baseURL', function($resource, baseURL) {    
+            var feedbackFac = {};
+            
+            // get leaders from $resource
+            feedbackFac.getFeedback = function() {
+                return $resource(baseURL+"feedback/:id", null, {'update': {method:'PUT'}});
+            }
+            return feedbackFac;
+        }])
+
 
 ;
