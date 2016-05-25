@@ -10,8 +10,7 @@ angular.module('confusionApp')
             
             // don't try to show menu by default
             $scope.showMenu = false;
-            $scope.message = "Loading ...";
-            
+            $scope.message = "Loading ..."; 
             
             menuFactory.getDishes().query(
                 function(response) {
@@ -22,7 +21,6 @@ angular.module('confusionApp')
                     $scope.message = "Error: " + response.status + " " + response.statusText;
                 }
             );
-
                         
             $scope.select = function(setTab) {
                 $scope.tab = setTab;
@@ -61,31 +59,26 @@ angular.module('confusionApp')
                         
         }])
 
-        .controller('FeedbackController', ['$scope', function($scope) {
+        .controller('FeedbackController',  ['$scope', 'feedbackFactory', function($scope, feedbackFactory) {
             
-            $scope.sendFeedback = function() {
-                
-                console.log($scope.feedback);
-                
+            $scope.sendFeedback = function() {                
                 if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
                     $scope.invalidChannelSelection = true;
                     console.log('incorrect');
                 }
                 else {
                     $scope.invalidChannelSelection = false;
+                    feedbackFactory.getFeedback().save($scope.feedback);
+                    console.log($scope.feedback);
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
                     $scope.feedback.mychannel="";
                     $scope.feedbackForm.$setPristine();
-                    console.log($scope.feedback);
                 }
             };
         }])
 
         .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
-
            // var dish= menuFactory.getDish(parseInt($stateParams.id,10));
-            
-            
             $scope.showDish = true;
             $scope.message="Loading ...";
             
@@ -97,11 +90,8 @@ angular.module('confusionApp')
                 
                 function(response) {
                     $scope.message = "Error: "+response.status + " " + response.statusText;
-
                 }
             );
-     
-            
         }])
 
         .controller('DishCommentController', ['$scope', 'menuFactory',function($scope, menuFactory) {

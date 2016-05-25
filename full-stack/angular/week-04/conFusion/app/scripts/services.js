@@ -30,8 +30,8 @@ angular.module('confusionApp')
         
         .factory('feedbackFactory', ['$resource', 'baseURL', function($resource, baseURL) {    
             var feedbackFac = {};
-            
-            // get leaders from $resource
+    
+            // get feedback from $resource
             feedbackFac.getFeedback = function() {
                 return $resource(baseURL+"feedback/:id", null, {'update': {method:'PUT'}});
             }
