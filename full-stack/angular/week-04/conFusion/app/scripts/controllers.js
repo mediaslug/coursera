@@ -150,7 +150,7 @@ angular.module('confusionApp')
             
             /* show the executive chef */
             $scope.showChef = false;
-            $scope.leader = corporateFactory.getLeaders().get({id:3}).$promise.then(
+            corporateFactory.getLeaders().get({id:3}).$promise.then(
                 function(response) {
                     $scope.showChef = true;
                      $scope.leader = response;
@@ -164,8 +164,17 @@ angular.module('confusionApp')
         // Implement the AboutController required for aboutus.html
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-            $scope.message="Loading ...";
-            $scope.leadership = corporateFactory.getLeaders().query();
+            $scope.showLeadership = false;
+            corporateFactory.getLeaders().query().$promise.then(
+                function(response) {
+                   $scope.leadership = response;
+                   $scope.showLeadership = true;
+                },
+                
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
         }])
 
 
