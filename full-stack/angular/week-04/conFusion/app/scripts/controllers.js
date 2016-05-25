@@ -79,7 +79,7 @@ angular.module('confusionApp')
 
         .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
            // var dish= menuFactory.getDish(parseInt($stateParams.id,10));
-            $scope.showDish = true;
+            $scope.showDish = false;
             $scope.message="Loading ...";
             
             $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)}).$promise.then(
@@ -118,23 +118,26 @@ angular.module('confusionApp')
         corporateFactory) {
             
             /* show the promotion */
+            $scope.showPromotion = false;
+            $scope.message="Loading ...";
+            
             // this works as well. not sure what the correct implementation is:
             // $scope.promotion = menuFactory.getPromotion().query();
-
             // opted to go with the get method, since i know i only want one dish
-            $scope.showPromotion = true;
-            $scope.message="Loading ...";
-            
-            $scope.promotion = menuFactory.getPromotion().get({id:0})
-            
+            menuFactory.getPromotion().get({id:0}).$promise.then(
+                function(response) {
+                    $scope.promotion = response;
+                    $scope.showPromotion = true;
+                }, 
+                
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
             
             /* show the featured dish */
-
-            $scope.showDish = false;
-            $scope.message="Loading ...";
-            
-            $scope.featuredDish = menuFactory.getDishes().get({id:0}).$promise.then(
-            
+            $scope.showDish = false;   
+            menuFactory.getDishes().get({id:0}).$promise.then(   
                 function(response) {
                     $scope.featuredDish = response;
                     $scope.showDish = true;
@@ -146,8 +149,16 @@ angular.module('confusionApp')
             );
             
             /* show the executive chef */
-            $scope.message="Loading ...";
-            $scope.leader = corporateFactory.getLeaders().get({id:3});
+            $scope.showChef = false;
+            $scope.leader = corporateFactory.getLeaders().get({id:3}).$promise.then(
+                function(response) {
+                    $scope.showChef = true;
+                     $scope.leader = response;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
         }])
 
         // Implement the AboutController required for aboutus.html
