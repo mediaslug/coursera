@@ -164,6 +164,7 @@ angular.module('confusionApp')
         // Implement the AboutController required for aboutus.html
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+            $scope.message="Loading ...";
             $scope.showLeadership = false;
             corporateFactory.getLeaders().query().$promise.then(
                 function(response) {
