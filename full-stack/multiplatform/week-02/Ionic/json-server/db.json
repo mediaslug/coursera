@@ -6,7 +6,7 @@
       "image": "images/uthapizza.png",
       "category": "mains",
       "label": "Hot",
-      "price": "4.99",
+      "price": 4.99,
       "description": "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.",
       "comments": [
         {
@@ -38,6 +38,66 @@
           "comment": "It's your birthday, we're gonna party!",
           "author": "25 Cent",
           "date": "2011-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "adding my comment.",
+          "author": "pj",
+          "date": "2016-06-27T04:18:00.828Z"
+        },
+        {
+          "rating": "4",
+          "name2": "tim",
+          "comment": "great meal!",
+          "date": "2016-06-27T04:26:41.611Z",
+          "name": "tim"
+        },
+        {
+          "rating": "4",
+          "name2": "tim",
+          "comment": "great meal!",
+          "date": "2016-06-27T04:26:41.611Z",
+          "name": "tim"
+        },
+        {
+          "rating": "3",
+          "comment": "it was great!",
+          "date": "2016-06-27T04:28:20.229Z"
+        },
+        {
+          "rating": "2",
+          "name": "john",
+          "comment": "watch out.",
+          "date": "2016-06-27T04:32:29.889Z"
+        },
+        {
+          "name": "don",
+          "comment": "trump",
+          "date": "2016-06-27T04:33:21.492Z"
+        },
+        {
+          "rating": "3",
+          "author": "Grace",
+          "comment": "Delicious!",
+          "date": "2016-06-27T04:36:12.836Z"
+        },
+        {
+          "rating": "3",
+          "author": "ddd",
+          "comment": "dddddd",
+          "date": "2016-06-27T04:45:06.276Z"
+        },
+        {
+          "rating": "3",
+          "author": "Charles",
+          "comment": "Root vegetables were great!",
+          "date": "2016-06-27T04:56:48.196Z"
+        },
+        {
+          "rating": "4",
+          "author": "ddd",
+          "comment": "dddddd",
+          "date": "2016-06-27T04:59:32.594Z"
         }
       ]
     },
@@ -209,7 +269,5 @@
       "description": "Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
     }
   ],
-  "feedback": [
-
-  ]
+  "feedback": []
 }

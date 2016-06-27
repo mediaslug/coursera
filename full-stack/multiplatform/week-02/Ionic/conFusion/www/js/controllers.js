@@ -156,10 +156,38 @@ angular.module('conFusion.controllers', [])
     };
 }])
 
-.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', 'baseURL', function($scope, $stateParams, menuFactory, baseURL) {
+.controller('DishDetailController', ['$scope', '$stateParams', '$ionicPopover', '$ionicModal', 'favoriteFactory','menuFactory', 'baseURL', function($scope, $stateParams, $ionicPopover, $ionicModal, favoriteFactory, menuFactory, baseURL) {
 
     $scope.baseURL = baseURL;
+    // .fromTemplateUrl() method
+    $ionicPopover.fromTemplateUrl('templates/dish-detail-popover.html', {
+        scope: $scope
+    }).then(function(popover) {
+        $scope.popover = popover;
+    });
+
+
+    $scope.openPopover = function($event) {
+        $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+    // Execute action on hide popover
+    $scope.$on('popover.hidden', function() {
+    // Execute action
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function() {
+    // Execute action
+    }); 
+    
     $scope.dish = {};
+    $scope.comment = {};
     $scope.showDish = false;
     $scope.message="Loading ...";
 
@@ -173,8 +201,41 @@ angular.module('conFusion.controllers', [])
             $scope.message = "Error: "+response.status + " " + response.statusText;
         }
     );
+    $scope.addFavorite = function (index) {
+        console.log("index is " + index);
+        favoriteFactory.addToFavorites($scope.dish.id);
+    }
+    
+     // adding the code for the comments modal
+      $scope.comment = {};
 
+      // Create the comment modal that we will use later
+      $ionicModal.fromTemplateUrl('templates/dish-comment.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.commentForm = modal;
+      });
 
+      // Triggered in the comment modal to close it
+      $scope.closeComment = function() {
+        $scope.commentForm.hide();
+      };
+
+      // Open the reserve modal
+      $scope.showCommentForm = function() {
+        $scope.commentForm.show();
+      };
+
+      // Perform the save comment action when the user submits the reserve form
+    $scope.doComment = function() {
+        $scope.comment.date = new Date().toISOString();
+        console.log( $scope.comment);
+
+        $scope.dish.comments.push($scope.comment);
+        menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
+        
+        $scope.commentForm.hide();
+    }; 
 }])
 
 .controller('DishCommentController', ['$scope', 'menuFactory', function($scope,menuFactory) {
