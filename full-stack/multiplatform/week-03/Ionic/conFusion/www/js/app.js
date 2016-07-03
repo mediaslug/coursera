@@ -20,7 +20,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       StatusBar.styleDefault();
     }
   });
-    
+
     $rootScope.$on('loading:show', function () {
         $ionicLoading.show({
             template: '<ion-spinner></ion-spinner> Loading ...'
@@ -37,7 +37,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
     });
 
     $rootScope.$on('$stateChangeSuccess', function () {
-        console.log('done');
+        console.log('Done loading');
         $rootScope.$broadcast('loading:hide');
     });
 })
@@ -45,86 +45,108 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+.state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/sidebar.html',
     controller: 'AppCtrl'
   })
 
-  .state('app.home', {
+.state('app.home', {
     url: '/home',
     views: {
       'mainContent': {
-        templateUrl: 'templates/home.html', 
-          controller: 'IndexController'
-      }
-    }
-  })
-
-  .state('app.aboutus', {
-      url: '/aboutus',
-      views: {
-        'mainContent': {
-          templateUrl: 'templates/aboutus.html',
-            controller: 'AboutController'
-        }
-      }
-    })
-  
-    .state('app.contactus', {
-      url: '/contactus',
-      views: {
-        'mainContent': {
-          templateUrl: 'templates/contactus.html'
-        }
-      }
-    })
-  
-  
-    .state('app.menu', {
-      url: '/menu',
-      views: {
-        'mainContent': {
-          templateUrl: 'templates/menu.html',
-          controller: 'MenuController'
-        }
-      }
-    })
-
-  .state('app.dishdetails', {
-    url: '/menu/:id',
-    views: {
-      'mainContent': {
-        templateUrl: 'templates/dishdetail.html',
-        controller: 'DishDetailController',
-            resolve: {
-            dish: ['$stateParams','menuFactory', function($stateParams, menuFactory){
-                return menuFactory.get({id:parseInt($stateParams.id, 10)});
-            }]
-        }
-      }
-    }
-  })
-  
-  .state('app.favorites', {
-      url: '/favorites',
-      views: {
-        'mainContent': {
-          templateUrl: 'templates/favorites.html',
-            controller:'FavoritesController',
-            resolve: {
-              dishes:  ['menuFactory', function(menuFactory){
-                return menuFactory.query();
+        templateUrl: 'templates/home.html',
+          controller: 'IndexController',
+          resolve: {
+              firstDish: ['$stateParams','menuFactory', function($stateParams, menuFactory){
+                return menuFactory.get({id:0});
               }],
-                            favorites: ['favoriteFactory', function(favoriteFactory) {
-                  return favoriteFactory.getFavorites();
+              promotion: ['promotionFactory', function (promotionFactory) {
+                return promotionFactory.get({id: 0});
+              }],
+
+              chef: ['corporateFactory', function(corporateFactory){
+                return corporateFactory.get({id: 3});
               }]
           }
-        }
       }
-    });
-    
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+    }
+  })
+
+.state('app.aboutus', {
+  url: '/aboutus',
+  views: {
+    'mainContent': {
+      templateUrl: 'templates/aboutus.html',
+        controller: 'AboutController',
+        resolve: {
+            leaders: ['corporateFactory', function(corporateFactory) {
+              return corporateFactory.query();
+            }]
+        }
+    }
+  }
+})
+
+.state('app.contactus', {
+  url: '/contactus',
+  views: {
+    'mainContent': {
+      templateUrl: 'templates/contactus.html'
+    }
+  }
+})
+
+
+.state('app.menu', {
+  url: '/menu',
+  views: {
+    'mainContent': {
+      templateUrl: 'templates/menu.html',
+      controller: 'MenuController',
+        resolve: {
+          dishes:  ['menuFactory', function(menuFactory){
+            return menuFactory.query();
+          }]
+      }
+    }
+  }
+})
+
+.state('app.dishdetails', {
+url: '/menu/:id',
+views: {
+  'mainContent': {
+    templateUrl: 'templates/dishdetail.html',
+    controller: 'DishDetailController',
+        resolve: {
+        dish: ['$stateParams','menuFactory', function($stateParams, menuFactory){
+            return menuFactory.get({id:parseInt($stateParams.id, 10)});
+        }]
+    }
+  }
+}
+})
+
+.state('app.favorites', {
+  url: '/favorites',
+  views: {
+    'mainContent': {
+      templateUrl: 'templates/favorites.html',
+        controller:'FavoritesController',
+        resolve: {
+          dishes:  ['menuFactory', function(menuFactory){
+            return menuFactory.query();
+          }],
+         favorites: ['favoriteFactory', function(favoriteFactory) {
+              return favoriteFactory.getFavorites();
+          }]
+      }
+    }
+  }
+});
+
+// if none of the above states are matched, use this as the fallback
+$urlRouterProvider.otherwise('/app/home');
 });
