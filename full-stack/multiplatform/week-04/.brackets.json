@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/www/js/controllers.js",
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/platforms/ios/build/emulator/conFusion.app/www/lib/ionic/js/ionic.bundle.js",
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/platforms/ios/build/emulator/conFusion.app/www/lib/ionic/js/ionic.bundle.min.js"
+    ]
+}
