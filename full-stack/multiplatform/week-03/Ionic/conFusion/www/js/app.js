@@ -32,12 +32,12 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
     });
 
     $rootScope.$on('$stateChangeStart', function () {
-        console.log('Loading ...');
+        console.log('Loading new state ...');
         $rootScope.$broadcast('loading:show');
     });
 
     $rootScope.$on('$stateChangeSuccess', function () {
-        console.log('Done loading');
+        console.log('Done loading state');
         $rootScope.$broadcast('loading:hide');
     });
 })

@@ -81,7 +81,7 @@ angular.module('conFusion.controllers', [])
     $scope.filtText = '';
     $scope.showDetails = false;
     $scope.showMenu = false;
-    $scope.message = "Loading ...";
+//    $scope.message = "Loading ...";
     $scope.dishes = dishes;
 
 
@@ -240,7 +240,7 @@ angular.module('conFusion.controllers', [])
     }
 }])
 
-        // implement the IndexController and About Controller here
+// implement the IndexController and About Controller here
 
 .controller('IndexController', ['$scope', 'firstDish', 'promotion','chef', 'menuFactory', 'corporateFactory', 'baseURL', function ($scope, firstDish, promotion, chef, menuFactory, corporateFactory, baseURL) {
 
@@ -248,7 +248,7 @@ angular.module('conFusion.controllers', [])
     $scope.leader = chef;
 
     $scope.showDish = false;
-    $scope.message = "Loading ...";
+   // $scope.message = "Loading ...";
 
     $scope.dish = firstDish;
 
@@ -268,13 +268,11 @@ angular.module('conFusion.controllers', [])
 
     $scope.baseURL = baseURL;
     $scope.shouldShowDelete = false;
-
     $scope.favorites = favorites;
-
     $scope.dishes = dishes;
 
 
-    console.log($scope.dishes, $scope.favorites);
+    //console.log($scope.dishes, $scope.favorites);
 
     $scope.toggleDelete = function () {
         $scope.shouldShowDelete = !$scope.shouldShowDelete;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('conFusion.services', ['ngResource'])
-    .constant("baseURL","http://192.168.1.115:3000/") //192.168.1.115
+    .constant("baseURL","http://localhost:3000/")
 
     .factory('menuFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
@@ -12,29 +12,22 @@ angular.module('conFusion.services', ['ngResource'])
             });
 
     }])
-    
+
     .factory('promotionFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
             return $resource(baseURL + "promotions/:id");
-
     }])
 
     .factory('corporateFactory', ['$resource', 'baseURL', function($resource,baseURL) {
-
-
         return $resource(baseURL+"leadership/:id");
-
     }])
 
     .factory('feedbackFactory', ['$resource', 'baseURL', function($resource,baseURL) {
-
-
         return $resource(baseURL+"feedback/:id");
-
     }])
 
-    .factory('favoriteFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+    .factory('favoriteFactory', ['$resource', 'baseURL', '$localStorage', function ($resource, baseURL, $localStorage) {
         var favFac = {};
-        var favorites = [];
+        var favorites = $localStorage.getObject('favoritesList','[]');;
 
         favFac.addToFavorites = function (index) {
             for (var i = 0; i < favorites.length; i++) {
@@ -42,6 +35,8 @@ angular.module('conFusion.services', ['ngResource'])
                     return;
             }
             favorites.push({id: index});
+            $localStorage.storeObject('favoritesList',favorites);
+
         };
 
         favFac.deleteFromFavorites = function (index) {
@@ -50,6 +45,8 @@ angular.module('conFusion.services', ['ngResource'])
                     favorites.splice(i, 1);
                 }
             }
+            $localStorage.storeObject('favoritesList',favorites);
+
         };
 
         favFac.getFavorites = function () {
@@ -75,6 +72,7 @@ angular.module('conFusion.services', ['ngResource'])
       return JSON.parse($window.localStorage[key] || defaultValue);
     }
   }
+
 }])
 
 ;
