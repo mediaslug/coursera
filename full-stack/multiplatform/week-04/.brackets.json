@@ -2,6 +2,10 @@
     "jscodehints.detectedExclusions": [
         "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/www/js/controllers.js",
         "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/platforms/ios/build/emulator/conFusion.app/www/lib/ionic/js/ionic.bundle.js",
-        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/platforms/ios/build/emulator/conFusion.app/www/lib/ionic/js/ionic.bundle.min.js"
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-03/Ionic/conFusion/platforms/ios/build/emulator/conFusion.app/www/lib/ionic/js/ionic.bundle.min.js",
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-04/Ionic/conFusion/platforms/android/platform_www/cordova-js-src/android/nativeapiprovider.js",
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-04/Ionic/conFusion/platforms/android/cordova/lib/build.js",
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-04/Ionic/conFusion/www/lib/angular-ui-router/src/state.js",
+        "/Users/pjabrams/training/coursera2/full-stack/multiplatform/week-04/Ionic/conFusion/platforms/android/assets/www/lib/ionic/js/ionic.min.js"
     ]
 }
