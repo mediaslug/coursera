@@ -74,7 +74,7 @@ angular.module('conFusion.controllers', [])
 
 })
 
-.controller('MenuController', ['$scope', 'dishes', 'favoriteFactory', 'baseURL', '$ionicListDelegate', function($scope, dishes, favoriteFactory, baseURL, $ionicListDelegate) {
+.controller('MenuController', ['$scope', 'dishes', 'favoriteFactory', 'baseURL', '$ionicListDelegate', '$ionicPlatform', '$cordovaLocalNotification', '$cordovaToast', function($scope, dishes, favoriteFactory, baseURL, $ionicListDelegate,$ionicPlatform, $cordovaLocalNotification, $cordovaToast) {
 
     $scope.baseURL = baseURL;
     $scope.tab = 1;
@@ -114,6 +114,26 @@ angular.module('conFusion.controllers', [])
         console.log("index is " + index);
         favoriteFactory.addToFavorites(index);
         $ionicListDelegate.closeOptionButtons();
+        $ionicPlatform.ready(function() {
+            $cordovaLocalNotification.schedule({
+                id:1,
+                title: 'Added favorite',
+                text: $scope.dishes[index].name
+            }).then(function() {
+                console.log('added favorite ' + $scope.dishes[index].name);
+            },
+            function() {
+                console.log('failed to add notification');
+            });
+
+            $cordovaToast
+            .show('Added favorite ' + $scope.dishes[index].name, 'long', 'center')
+            .then(function(success){
+                // success
+            }, function(error){
+                // error
+            })
+        })
     }
 }])
 
@@ -149,7 +169,7 @@ angular.module('conFusion.controllers', [])
     };
 }])
 
-.controller('DishDetailController', ['$scope', 'dish','$stateParams', '$ionicPopover', '$ionicModal', 'favoriteFactory','menuFactory', 'baseURL', function($scope, dish, $stateParams, $ionicPopover, $ionicModal, favoriteFactory, menuFactory, baseURL) {
+.controller('DishDetailController', ['$scope', 'dish','$stateParams', '$ionicPopover', '$ionicModal',  '$ionicPlatform', '$cordovaLocalNotification', '$cordovaToast', 'favoriteFactory','menuFactory', 'baseURL', function($scope, dish, $stateParams, $ionicPopover, $ionicModal,  $ionicPlatform, $cordovaLocalNotification, $cordovaToast, favoriteFactory, menuFactory, baseURL) {
 
     $scope.baseURL = baseURL;
     // .fromTemplateUrl() method
@@ -188,6 +208,28 @@ angular.module('conFusion.controllers', [])
     $scope.addFavorite = function (index) {
         console.log("index is " + index);
         favoriteFactory.addToFavorites($scope.dish.id);
+        console.log("called add favorite");
+        $ionicPlatform.ready(function() {
+            console.log("ionic platform ready");
+            $cordovaLocalNotification.schedule({
+                id:1,
+                title: 'Added favorite',
+                text: $scope.dish.name
+            }).then(function() {
+                console.log('added favorite ' + dish.name);
+            },
+            function() {
+                console.log('failed to add notification');
+            });
+
+            $cordovaToast
+            .show('Added favorite ' + $scope.dish.name, 'long', 'center')
+            .then(function(success){
+                // success
+            }, function(error){
+                // error
+            })
+        })
     }
 
      // adding the code for the comments modal
