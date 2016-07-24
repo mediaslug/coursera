@@ -1,3 +1,5 @@
+// a simple http server using the http module returning hard coded text
+
 var http = require('http');
 
 var hostname = 'localhost';
