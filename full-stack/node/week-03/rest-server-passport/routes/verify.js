@@ -34,3 +34,4 @@ exports.verifyOrdinaryUser = function(req, res, next) {
         return next(err);
     }
 };
+
