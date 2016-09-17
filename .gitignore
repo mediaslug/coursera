@@ -22,3 +22,8 @@ full-stack/angular/week-04/conFusion/bower_components
 full-stack/angular/week-04/conFusion/node_modules
 full-stack/angular/week-04/conFusion/bower_components/
 full-stack/angular/week-04/.brackets.json
+
+
+full-stack/node/week-04/continued-from-week-03/bin/cert.csr
+full-stack/node/week-04/continued-from-week-03/bin/certificate.pem
+full-stack/node/week-04/continued-from-week-03/bin/private.key
