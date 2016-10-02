@@ -11,8 +11,7 @@ var favoriteSchema = new Schema({
         ref: 'User',
         unique:true
     },
-    dishes: [{
-    }] //  type: mongoose.Schema.Types.ObjectId,unique: true, ref: 'Dish'
+    dishes: [{ type: mongoose.Schema.Types.ObjectId,unique: true, ref: 'Dish' }] //
 },
    { timestamps: true}
                                );
