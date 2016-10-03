@@ -8,14 +8,10 @@ var app = express();
 var Leadership = require('../models/leadership');
 var Verify = require('./verify');
 
-
-
 // set up logging for dev environment
 app.use(morgan('dev'));
 
 var leadershipRouter = express.Router();
-
-
 leadershipRouter.use(bodyParser.json());
 
 // set up our default route
@@ -26,7 +22,7 @@ leadershipRouter.route('/')
 .get(Verify.verifyOrdinaryUser, function(req, res, next){
 //    res.end("Will send you all of the leadership data!")
     Leadership.find({}, function(err, leader) {
-        if (err) throw err;
+        if (err) next(err);
         res.json(leader);
     });
 })
@@ -35,7 +31,7 @@ leadershipRouter.route('/')
 .post(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
 //    res.end('Will add the leader: ' + req.body.name + ' with details: ' + req.body.description);
     Leadership.create(req.body, function(err, leader) {
-        if (err) throw err;
+        if (err) next(err);
         console.log('leader created');
 
         var id = leader._id;
@@ -50,7 +46,7 @@ leadershipRouter.route('/')
 .delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
 //    res.end('Deleting all leaders');
     Leadership.remove({}, function(err, resp) {
-       if (err) throw err;
+       if (err) next(err);
         res.json(resp);
     })
 });
@@ -60,9 +56,9 @@ leadershipRouter.route('/:leaderId')
 .get(Verify.verifyOrdinaryUser, function(req, res, next){
 //    res.end('Will send you the details of leader id #' + req.params.leaderId + ' to you.')
     Leadership.find(req.params.leaderId, function(err, leaders) {
+        if (err) next(err);
         res.json(leaders)
-
-    })
+    });
 })
 
 .put(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next){
@@ -73,7 +69,7 @@ leadershipRouter.route('/:leaderId')
         }, {
         new:true
         },  function (err, leader) {
-        if (err) throw err;
+        if (err) next(err);
         res.json(leader);
     });
 })
@@ -81,7 +77,7 @@ leadershipRouter.route('/:leaderId')
 .delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next){
 //    res.end('Deleting leader: ' + req.params.leaderId)
     Leadership.remove(req.params.leaderId, function(err, resp) {
-        if (err) throw err;
+        if (err) next(err);
         res.json(resp);
     })
 });

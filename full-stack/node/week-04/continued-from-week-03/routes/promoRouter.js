@@ -11,23 +11,20 @@ var app = express();
 
 var Verify = require('./verify');
 
-
 // set up logging for dev environment
 app.use(morgan('dev'));
 
 var promotionsRouter = express.Router();
-
-
 promotionsRouter.use(bodyParser.json());
 
 // set up our default route
 promotionsRouter.route('/')
 
 // retrieve a resource
-.get(Verify.verifyOrdinaryUser, function(req, res, next){
+.get(function(req, res, next){
 //    res.end("Will send you all of the promotions!")
     Promotions.find({}, function(err, promotion) {
-        if(err) throw err;
+        if (err) next(err);
         res.json(promotion)
     })
 })
@@ -36,7 +33,7 @@ promotionsRouter.route('/')
 .post(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
 //    res.end('Will add the promotion: ' + req.body.name + ' with details: ' + req.body.description);
     Promotions.create(req.body, function(err, promotion){
-        if (err) throw err;
+        if (err) next(err);
         console.log('promotion created');
 
         // grab the id of the added promotion
@@ -51,19 +48,19 @@ promotionsRouter.route('/')
 // remove all resources
 .delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
     Promotions.remove({}, function(err, resp) {
-        if (err) throw err;
+        if (err) next(err);
         res.json(resp);
     });
 });
 
 // setup the route with a parameter
 promotionsRouter.route('/:promotionId')
-.get(Verify.verifyOrdinaryUser, function(req, res, next){
+.get(function(req, res, next){
 //     res.end('Will send you the details of promotion #' + req.params.promotionId + ' to you.')
 
     Promotions.findById(req.params.promotionId, function(err, promotion){
         console.log(promotion);
-        if (err) throw err;
+        if (err) next(err);
         res.json(promotion);
 
     });
@@ -78,7 +75,7 @@ promotionsRouter.route('/:promotionId')
     }, {
         new:true
     }, function(err, promotion){
-        if (err) throw err;
+        if (err) next(err);
         res.json(promotion);
     });
 
@@ -87,7 +84,7 @@ promotionsRouter.route('/:promotionId')
 .delete(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next){
 //    res.end('Deleting promotion: ' + req.params.leaderId)
     Promotions.findByIdAndRemove(req.params.promotionId, function(err, resp) {
-        if(err) throw err;
+        if (err) next(err);
         res.json(resp);
     })
 });

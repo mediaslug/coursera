@@ -18,6 +18,10 @@ var User = new Schema({
     admin: {
         type:Boolean,
         default: false
+    },
+     featured: {
+        type: Boolean,
+        default:false
     }
 });
 

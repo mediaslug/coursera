@@ -22,30 +22,30 @@ favoriteRouter.route('/')
 .get(Verify.verifyOrdinaryUser, function(req, res, next){
 
 //    res.end("Will send you all of the dishes. Yee-haw!")
-    Favorites.find({"postedBy": req.decoded._doc._id})
+    Favorites.find({"postedBy": req.decoded._id})
         .populate('dishes')
         .populate('postedBy')
         .exec(function(err, favorites) {
-        if (err) throw err;
+        if (err) next(err);
         res.json(favorites);
     });
 })
 
 // post creates a resource. we're going to create a new list for favorites
 .post(Verify.verifyOrdinaryUser, function(req, res, next) {
-    userId = req.decoded._doc._id;
+    userId = req.decoded._id;
     newFavoriteId = req.body._id;
     Favorites.find({"postedBy": userId }).exec(
         function (err, favorites) {
-            if (err) console.log (err)
+            if (err) next(err);
 
             if (!favorites.length) {
                 // console.log("will need to add a new list of favorites for this user");
                 Favorites.create({
-                    "postedBy": req.decoded._doc._id,
+                    "postedBy": req.decoded._id,
                     "dishes": req.body._id},
                     function(err, favorite) {
-                        if (err) throw err;
+                        if (err) next(err);
                         console.log('favorite created');
                         // display message to end user
                         res.json(favorite);
@@ -61,7 +61,9 @@ favoriteRouter.route('/')
                 if (!favoriteAlreadyExists) {
                     // add the favorite to the array
                     favorites[0].dishes.push(newFavoriteId);
-                    favorites[0].save(function(err, result) {if (err) throw err;})
+                    favorites[0].save(function(err, result) {
+                        if (err) next(err);
+                    })
                 }
                 res.json(favorites);
             }
@@ -70,9 +72,9 @@ favoriteRouter.route('/')
 
 // remove all favorites
 .delete(Verify.verifyOrdinaryUser, function(req, res, next) {
-    userId = req.decoded._doc._id;
+    userId = req.decoded._id;
     Favorites.remove({"postedBy": userId }, function(err, resp) {
-        if (err) throw err;
+        if (err) next(err);
         res.end("Favorites have been deleted");
     });
 });
@@ -80,12 +82,14 @@ favoriteRouter.route('/')
 // setup the route with a parameter to grab a specific favorite
 favoriteRouter.route('/:favoriteId')
 .delete(Verify.verifyOrdinaryUser, function(req, res, next){
-    userId = req.decoded._doc._id;
+    userId = req.decoded._id;
     Favorites.find({"postedBy": userId}, function(err, favorites) {
-        if (err) throw err;
+        if (err) next(err);
         if (favorites[0].dishes.indexOf(req.params.favoriteId) != -1) {
             favorites[0].dishes.pull(req.params.favoriteId);
-            favorites[0].save(function(err, result) {if (err) throw err;})
+            favorites[0].save(function(err, result) {
+                if (err) next(err);
+            })
             res.json(favorites);
             res.end("Deleting the dish from your list of favorites " + req.params.favoriteId);
         } else {

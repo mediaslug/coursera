@@ -8,6 +8,7 @@ var Currency = mongoose.Types.Currency;
 
 // create a schema for the promotion
 var promotionSchema = new Schema({
+     
     name: {
         type:String,
         required: true,
@@ -32,7 +33,12 @@ var promotionSchema = new Schema({
     description: {
         type:String,
         required:true
+    }, 
+    featured: {
+        type: Boolean,
+        default:false
     }
+
 }, {
     timestamps:true
 });
