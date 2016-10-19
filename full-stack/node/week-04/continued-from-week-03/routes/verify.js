@@ -41,8 +41,10 @@ exports.verifyOrdinaryUser = function(req, res, next) {
 
 
 exports.verifyAdmin = function(req, res, next) {
-    if (req.decoded._doc.admin) {
-        console.log("in verify admin req.decoded._doc.admin = " + req.decoded._doc.admin );
+    console.log("in verify admin req.decoded.admin = " + req.decoded.admin );
+
+    if (req.decoded.admin) {
+        console.log("in verify admin req.decoded._doc.admin = " + req.decoded.admin );
 
         return next();
     } else {

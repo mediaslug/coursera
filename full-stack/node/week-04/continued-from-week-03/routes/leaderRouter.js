@@ -19,8 +19,8 @@ leadershipRouter.route('/')
 
 
 // retrieve a resource
-.get(Verify.verifyOrdinaryUser, function(req, res, next){
-//    res.end("Will send you all of the leadership data!")
+.get(function(req, res, next){
+//   res.end("Will send you all of the leadership data!")
     Leadership.find({}, function(err, leader) {
         if (err) next(err);
         res.json(leader);
@@ -53,7 +53,7 @@ leadershipRouter.route('/')
 
 // setup the route with a parameter
 leadershipRouter.route('/:leaderId')
-.get(Verify.verifyOrdinaryUser, function(req, res, next){
+.get(function(req, res, next){
 //    res.end('Will send you the details of leader id #' + req.params.leaderId + ' to you.')
     Leadership.find(req.params.leaderId, function(err, leaders) {
         if (err) next(err);

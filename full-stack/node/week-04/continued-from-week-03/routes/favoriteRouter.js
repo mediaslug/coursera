@@ -23,8 +23,8 @@ favoriteRouter.route('/')
 
 //    res.end("Will send you all of the dishes. Yee-haw!")
     Favorites.find({"postedBy": req.decoded._id})
-        .populate('dishes')
-        .populate('postedBy')
+        //.populate('dishes')
+        //.populate('postedBy')
         .exec(function(err, favorites) {
         if (err) next(err);
         res.json(favorites);
@@ -35,39 +35,40 @@ favoriteRouter.route('/')
 .post(Verify.verifyOrdinaryUser, function(req, res, next) {
     userId = req.decoded._id;
     newFavoriteId = req.body._id;
-    Favorites.find({"postedBy": userId }).exec(
-        function (err, favorites) {
-            if (err) next(err);
+    Favorites.find({"postedBy": userId })
+        .exec(
+            function (err, favorites) {
+                if (err) next(err);
 
-            if (!favorites.length) {
-                // console.log("will need to add a new list of favorites for this user");
-                Favorites.create({
-                    "postedBy": req.decoded._id,
-                    "dishes": req.body._id},
-                    function(err, favorite) {
-                        if (err) next(err);
-                        console.log('favorite created');
-                        // display message to end user
-                        res.json(favorite);
-                    });
-            } else {
-                // there is already a favorite for this user
-                if (favorites[0].dishes.indexOf(newFavoriteId) != -1) {
-                    favoriteAlreadyExists = true;
+                if (!favorites.length) {
+                    // console.log("will need to add a new list of favorites for this user");
+                    Favorites.create({
+                        "postedBy": req.decoded._id,
+                        "dishes": req.body._id},
+                        function(err, favorite) {
+                            if (err) next(err);
+                            console.log('favorite created');
+                            // display message to end user
+                            res.json(favorite);
+                        });
                 } else {
-                    favoriteAlreadyExists = false;
-                }
+                    // there is already a favorite for this user
+                    if (favorites[0].dishes.indexOf(newFavoriteId) != -1) {
+                        favoriteAlreadyExists = true;
+                    } else {
+                        favoriteAlreadyExists = false;
+                    }
 
-                if (!favoriteAlreadyExists) {
-                    // add the favorite to the array
-                    favorites[0].dishes.push(newFavoriteId);
-                    favorites[0].save(function(err, result) {
-                        if (err) next(err);
-                    })
+                    if (!favoriteAlreadyExists) {
+                        // add the favorite to the array
+                        favorites[0].dishes.push(newFavoriteId);
+                        favorites[0].save(function(err, result) {
+                            if (err) next(err);
+                        })
+                    }
+                    res.json(favorites);
                 }
-                res.json(favorites);
-            }
-    });
+        });
 })
 
 // remove all favorites

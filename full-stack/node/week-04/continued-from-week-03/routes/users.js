@@ -71,10 +71,10 @@ router.get('/logout', function(req, res) {
     });
 });
 
-
-
 router.get('/facebook', passport.authenticate('facebook'),
-  function(req, res){});
+  function(req, res){
+      
+  });
 
 router.get('/facebook/callback', function(req,res,next){
   passport.authenticate('facebook', function(err, user, info) {

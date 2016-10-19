@@ -10,6 +10,8 @@ var Verify = require('./verify');
 var app = express();
 
 
+
+
 // set up logging for dev environment
 app.use(morgan('dev'));
 
@@ -41,7 +43,7 @@ dishRouter.route('/')
         console.log('dish created');
 
         // grab the id of the added dish, which is returned to the callback function
-        var id = dish._id;
+       var id = dish._id;
 
         // display message to end user
         res.writeHead(200, {'Content-type':'text/plain'});
